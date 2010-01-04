@@ -1,17 +1,14 @@
 <?xml version="1.0"?>
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
-<!-- ## Build 20080912.1900 -->
  <Description about="urn:mozilla:install-manifest">
     <em:id>gui_minify@alcacoop.it</em:id>
     <em:name>Hide GUI Bars</em:name>
     <em:version>0.1</em:version>
     <em:description>
 	Allows you to easily Hide NavigationBar, MenuBar and TabBar with a toggle key.
-	</em:description>
+    </em:description>
     <em:creator>Dom0</em:creator>
-    <em:homepageURL></em:homepageURL>
-	<em:aboutURL>chrome://hidenavbar/content/about.xul</em:aboutURL>
-	<em:optionsURL>chrome://hidenavbar/content/options.xul</em:optionsURL>  
+    <em:optionsURL>chrome://gui_minify/content/options.xul</em:optionsURL>  
     <em:targetApplication>
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
@@ -19,7 +16,5 @@
         <em:maxVersion>3.7.*</em:maxVersion>
       </Description>
     </em:targetApplication>
-
  </Description>
- 
 </RDF>
