@@ -7,7 +7,7 @@
     <em:description>
 	Allows you to easily Hide NavigationBar, MenuBar and TabBar with a toggle key.
     </em:description>
-    <em:creator>Dom0</em:creator>
+    <em:creator>Domenico Martella @ Alcacoop (Italy)</em:creator>
     <em:optionsURL>chrome://gui_minify/content/options.xul</em:optionsURL>  
     <em:targetApplication>
       <Description>
