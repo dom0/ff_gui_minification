@@ -1,0 +1,15 @@
+Default toggle key is ALT
+Bars are automatically shown when press Ctrl+L (open URL) or Ctrl+T (open new tab)
+Bars are automatically hidden when press Ctrl+W (close tab)
+
+TODO: 
+Options window...
+
+
+Note:
+if you want "shadow install" this extension in your firefox profile:
+  1. clone this repo ;-)
+  2. create a file in your extensions directory (on Linux usually ~/.mozilla/firefox/profile_name/extensions)  named "gui_minify@alcacoop.it"
+  3. add a line in this file with your working-tree path
+
+Enjoy!
