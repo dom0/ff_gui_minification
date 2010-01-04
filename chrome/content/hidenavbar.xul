@@ -1,0 +1,252 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://hidenavbar/locale/hidenavbar.dtd">
+
+<overlay id="hideNavbarOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
+<script type="application/x-javascript">
+<![CDATA[
+
+window.addEventListener("load",
+	
+	function(event){
+	
+
+		/*###############################
+		### HOOK                      ###
+		###############################*/
+		
+		function hookCode(orgFunc, orgCode, myCode)
+		{
+			eval(orgFunc + "=" + eval(orgFunc).toString().replace(orgCode, myCode));
+		}
+		
+		hookCode("FullScreen.toggle", /}$/, 'setTimeout(function(){ navbar.collapsed = (window.fullScreen ? true : navbar.enabled); }, 0); $&');
+		hookCode("FullScreen.mouseoverToggle", /}$/, 'navbar.collapsed = (window.fullScreen ? true : navbar.enabled); $&');
+		
+		
+		
+		/*###############################
+		### DECLARATIONS              ###
+		###############################*/
+		
+		var navbar = document.getElementById("navigator-toolbox");
+		
+		var enabledExtensions = nsPreferences.getLocalizedUnicharPref("extensions.enabledItems");
+		blnGlasserIsInstalled = enabledExtensions.indexOf("glasser") == -1 ? false : true;
+		
+		
+		
+		
+		/*###############################
+		### PROPERTIES                ###
+		###############################*/
+		//## collapsed -- boolean
+		
+		navbar.__defineGetter__("collapsed",
+			function()
+			{
+				var attr = (window.fullScreen ? "moz-collapsed" : "collapsed");
+				return this.hasAttribute(attr) && (this.getAttribute(attr) == "true");
+			}
+		);
+		navbar.__defineSetter__("collapsed",
+			function()
+			{
+				this.setAttribute("toggling", true);
+				
+				var attr = (window.fullScreen ? "moz-collapsed" : "collapsed");
+				
+				if (arguments[0])
+					this.setAttribute(attr, true);
+				else
+				{
+					this.removeAttribute("moz-collapsed");
+					this.removeAttribute("collapsed");
+				}
+
+				if (window.fullScreen && FullScreen._isChromeCollapsed)
+				{
+					var toggler = document.getElementById("fullscr-toggler");
+					if (arguments[0])
+						toggler.removeAttribute("moz-collapsed");
+					else
+						toggler.setAttribute("moz-collapsed", true);
+				}
+				
+				this.removeAttribute("toggling");
+			}
+		);
+		
+		
+		//## enabled -- boolean
+		
+		navbar.__defineGetter__("enabled",
+			function()
+			{
+				return nsPreferences.getBoolPref("hidenavbar.enabled", true);
+			}
+		);
+		navbar.__defineSetter__("enabled",
+			function()
+			{
+				nsPreferences.setBoolPref("hidenavbar.enabled", arguments[0]);
+			}
+		);
+		  
+		  
+		//## laststate -- boolean
+		
+		navbar.__defineGetter__("laststate",
+			function()
+			{
+				return nsPreferences.getBoolPref("hidenavbar.hidden", true);
+			}
+		);
+		navbar.__defineSetter__("laststate",
+			function()
+			{
+				nsPreferences.setBoolPref("hidenavbar.hidden", arguments[0]);
+			}
+		);
+		
+		
+		//## keycode
+		
+		navbar.__defineGetter__("keycode",
+			function()
+			{
+				return nsPreferences.getIntPref("hidenavbar.keycode", true);
+			}
+		);
+		navbar.__defineSetter__("keycode",
+			function()
+			{
+				nsPreferences.setIntPref("hidenavbar.keycode", arguments[0]);
+			}
+		);
+		
+		
+		
+		/*###############################
+		### METHODS                   ###
+		###############################*/
+		
+		tryshow = function()
+			{
+				if (gBrowser.mTabs.length>1)
+					gBrowser.setStripVisibilityTo(true);
+				navbar.collapsed=false;
+				return 0;
+			};
+			
+		
+		tryhide = function()
+			{
+				gBrowser.setStripVisibilityTo(false);
+				navbar.collapsed=true;
+				return 0;
+			};
+			
+		
+		
+		/*###############################
+		### EVENTS                    ###
+		###############################*/
+		
+		navbar.addEventListener("DOMAttrModified",
+			function(event)
+			{
+				if (event.target != this)
+					return;
+					
+				if (event.attrName=="collapsed" || event.attrName=="moz-collapsed")
+				{
+					if (!this.hasAttribute("toggling"))
+						if (this.collapsed != this.enabled)
+							this.collapsed = this.enabled;
+				}
+			}
+		, true);
+		
+		
+		navbar.addEventListener("mouseover",
+			function(event)
+			{
+				blnNavIsHovered = true;
+				tryshow();
+			}
+		, true);
+		
+		
+		window.addEventListener("keydown",
+			function(event)
+			{
+				if ((event.keyCode == navbar.keycode) && !event.ctrlKey && !event.shiftKey && !event.metaKey)
+				{
+					navbar.actionKey = true;
+					return;
+				}
+				
+				navbar.actionKey = false;
+				
+			}
+		, true);
+		
+		
+		window.addEventListener("keyup",
+			function(event) {
+				if ((event.keyCode == navbar.keycode) && !event.ctrlKey && !event.shiftKey && !event.metaKey && navbar.actionKey){
+					navbar.actionKey = false;
+					
+					if (navbar.enabled || window.fullScreen) {
+						if (navbar.collapsed == true) {
+							tryshow();
+							navbar.laststate = navbar.collapsed;
+						} else {
+							tryhide();
+							navbar.laststate = navbar.collapsed;
+						}
+					}
+					return;
+				}
+			}
+		, true);
+		
+		
+		
+		/*###############################
+		### INLINE CODE               ###
+		###############################*/
+		
+		
+		if (navbar.enabled == true)
+		{
+			var blnHidden = navbar.laststate;
+		
+			var intHideOnStart = nsPreferences.getIntPref("hidenavbar.hideonstart");
+		
+			if (intHideOnStart == 0)
+				blnHidden = false;
+			else if (intHideOnStart == 1)
+				blnHidden = true;
+		
+			navbar.collapsed = blnHidden;
+			navbar.laststate = blnHidden;
+		}
+		
+		var container = gBrowser.tabContainer;
+		container.addEventListener("TabOpen", tryshow, false);
+		container.addEventListener("TabClose", tryhide, false);
+	}
+
+, false);
+]]>
+</script>
+<toolbar id="toolbar-navbar" fullscreentoolbar="true" toolbarname="&navbarCmd.label;" accesskey="&navbarCmd.accesskey;"/>
+
+<!--menuitem xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="menu_openLocation" label="Apriiiiiii indirizzo…" command="" key="focusURLBar" accesskey="r" acceltext="Ctrl+L"/-->
+
+<command xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="Browser:OpenLocation" oncommand="tryshow();openLocation();"/>
+
+</overlay>

@@ -1,0 +1,3 @@
+overlay	chrome://browser/content/browser.xul chrome://hidenavbar/content/hidenavbar.xul
+content	hidenavbar	chrome/content/
+locale	hidenavbar	en-US	chrome/locale/en-US/
