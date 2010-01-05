@@ -65,6 +65,8 @@ window.addEventListener("load",
 	        //OpenURL and TabClose event handlers...	
 		var container = gBrowser.tabContainer;
 		container.addEventListener("TabOpen", tryshow, false);
-		container.addEventListener("TabClose", tryhide, false);
+		//gNavToolbox.addEventListener("click", function(){alert("pippo")},false);
+		gNavToolbox.addEventListener("blur", function(){alert("pippo")},false);
+		//container.addEventListener("TabClose", tryhide, false);
 	}
 , false);

@@ -40,6 +40,10 @@
 <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
 <script type="application/x-javascript" src="chrome://gui_minify/content/overlay.js"/>
 
+<!--CTRL+L-->
 <command id="Browser:OpenLocation" oncommand="tryshow();openLocation();"/>
+
+<!--URL BAR-->
+<textbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="urlbar" ontextentered="tryhide();this.handleCommand(param);"/>
 
 </overlay>
