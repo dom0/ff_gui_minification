@@ -1,0 +1,7 @@
+v0.1.1
+FIX: tryhide after openurl or opentab works only if last_state was hidden
+FIX: eliminato tryhide() alla chiusura di un tab
+FEATURE: all'inserimento di un URL viene ri-nascosta la GUI
+
+v0.1
+Initial import
