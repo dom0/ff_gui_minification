@@ -29,6 +29,8 @@
         #################################################################
 */ 
 
+var last_state = 1; //1 = show, -1 = hide
+
 var tryshow = function(){
 	if (gBrowser.mTabs.length>1)
 		gBrowser.setStripVisibilityTo(true);
@@ -38,6 +40,7 @@ var tryshow = function(){
 	
 
 var tryhide = function(){
+	if (last_state>0) return;
 	gBrowser.setStripVisibilityTo(false);
 	gNavToolbox.setAttribute("collapsed", true);
 	//Save state
@@ -54,8 +57,10 @@ window.addEventListener("load",
 				//alert(gNavToolbox.getAttribute("collapsed"));
 				if ((event.keyCode == gmKeyCode) && !event.ctrlKey && !event.shiftKey && !event.metaKey){
 					if (gNavToolbox.getAttribute("collapsed")=="true") {
+						last_state = -last_state;
 						tryshow();
 					} else {
+						last_state = -last_state;
 						tryhide();
 					}
 				}
