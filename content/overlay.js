@@ -30,6 +30,7 @@
 */ 
 
 var last_state = 1; //1 = show, -1 = hide
+var keypressed = false;
 
 var tryshow = function(){
 	if (gBrowser.mTabs.length>1)
@@ -51,10 +52,19 @@ window.addEventListener("load",
 	function(event){
 		var gmEnabled = Application.prefs.getValue("gui_minify.enabled", true);
 	
+		window.addEventListener("keydown",function(event){
+  			keypressed = false;
+			//Alt not alone...
+			if (event.altKey) keypressed = true;
+		},false);
+
 		window.addEventListener("keyup",
 			function(event) {
+		
 				var gmKeyCode = Application.prefs.getValue("gui_minify.keycode", true);
-				//alert(gNavToolbox.getAttribute("collapsed"));
+		
+				if (keypressed) return;
+		
 				if ((event.keyCode == gmKeyCode) && !event.ctrlKey && !event.shiftKey && !event.metaKey){
 					if (gNavToolbox.getAttribute("collapsed")=="true") {
 						last_state = -last_state;
