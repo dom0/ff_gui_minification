@@ -33,19 +33,31 @@
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
  
-<prefwindow id="stockwatcher2-prefs"
+<prefwindow id="gui-minify-prefs"
      title="GUI Minify Options"
      xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
  
-<prefpane id="sw2-stock-pane" label="Stock Settings">
+<prefpane id="gui-minify-pref-pane" label="Settings">
   <preferences>
-    <preference id="pref_symbol" name="stockwatcher2.symbol" type="string"/>
+    <preference id="gui-minify-pref-tabbar" name="gui-minify.tabbar"
+		type="bool" />
+    <preference id="gui-minify-pref-addrbar" name="gui-minify.addrbar"
+		type="bool" />
+    <preference id="gui-minify-pref-menubar" name="gui-minify.menubar"
+		type="bool"/>
   </preferences>
  
-  <hbox align="center">
-    <label control="symbol" value="Stock to watch: "/>
-    <textbox preference="pref_symbol" id="symbol" maxlength="4"/>
-  </hbox>
+  <vbox>
+    <hbox align="center">
+      <checkbox label="Hide the tab bar" preference="gui-minify-pref-tabbar" id="opt-tabbar" />
+    </hbox>
+    <hbox>
+      <checkbox label="Hide the address bar" preference="gui-minify-pref-addrbar" id="opt-addrbar" />
+    </hbox>
+    <hbox>
+      <checkbox label="Hide the menu bar" preference="gui-minify-pref-menubar" id="opt-menubar" />
+    </hbox>
+  </vbox>
 </prefpane>
  
 </prefwindow>
