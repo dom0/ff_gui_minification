@@ -1,3 +1,6 @@
+v0.2.1
+FIX: migliorata la gestione degli stati durante gli eventi OpenURL/TabOpen/TabClose
+
 v0.2
 FEATURE: added some configuration options (now you can select what components have to be hidden)
 

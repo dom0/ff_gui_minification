@@ -78,7 +78,7 @@
     <vbox style="margin-top: 5px">
       <hbox>
         <button label="Select key" disabled="true"/> 
-        <textbox id="txtKeyCode" disabled="true" style="width: 35px;" value="0"/>
+        <textbox id="txtKeyCode" disabled="true" style="width: 35px;" value="Alt"/>
       </hbox>
     </vbox>
 
