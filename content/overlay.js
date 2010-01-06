@@ -79,6 +79,8 @@ var tryhide = function(ch_state){
       
 window.addEventListener("load",
   function(event){
+    tryhide(false);
+
     window.addEventListener("keydown",function(event){
         keypressed = false;
       //Alt not alone...
@@ -100,8 +102,23 @@ window.addEventListener("load",
     
     //OpenURL event handler...  
     var container = gBrowser.tabContainer;
-    container.addEventListener("TabOpen", tryshow, false);
-    //gNavToolbox.addEventListener("click", function(){alert("pippo")},false);
-    //container.addEventListener("TabClose", tryhide, false);
+    
+    //Apertura di un Tab
+    Application.activeWindow.events.addListener("TabOpen", function(event){
+      event.data.events.addListener('load', function(event){
+				if (event.data.uri.spec!="about:blank")
+					return;
+
+				if (last_state==0){ 
+	  			tryshow(false);
+					document.getElementById("urlbar").focus();
+        }
+      }, false);
+    }, false);
+    
+		//Chiusura di chiusura di un tab
+    container.addEventListener("TabClose", function(){ if (last_state==0) tryhide(false); }, false);
+
+
   }
 , false);
