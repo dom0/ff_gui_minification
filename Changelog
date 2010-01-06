@@ -1,3 +1,6 @@
+v0.2
+FEATURE: added some configuration options (now you can select what components have to be hidden)
+
 v0.1.1
 FIX: tryhide after openurl or opentab works only if last_state was hidden
 FIX: eliminato tryhide() alla chiusura di un tab

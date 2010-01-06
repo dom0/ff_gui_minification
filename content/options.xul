@@ -34,8 +34,8 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
  
 <prefwindow id="gui-minify-prefs"
-  title="GUI Minify Options"
-  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" width="400px" height="300px">
+  title="Hide GUI Bars configuration"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" style="width: 500px">
  
   <prefpane id="gui-minify-pref-pane" label="Settings">
     <preferences>
@@ -44,19 +44,63 @@
       <preference id="gui-minify-pref-menubar" name="gui_minify.menubar" type="bool" instantApply="true"/>
       <preference id="gui-minify-pref-keycode" name="gui_minify.keycode" type="bool" instantApply="true"/>
     </preferences>
-   
-    <vbox>
+
+    <description id="title" value="Hide GUI Bars" style="font-size: 200%; font-weight: bold; margin-bottom: 15px"/>
+ 
+    <tabbox>
+      <tabs>
+        <tab label="Options" selected="true"/>
+        <tab label="Credits"/>
+      </tabs>
+
+      <tabpanels>
+        <tabpanel orient="vertical">
+
+ 
+    <vbox style="margin-top: 15px">
+      <label style="font-weight: bold; font-size: 120%">General:</label>
+    </vbox>
+    <vbox style="margin-top: 5px">
+      <hbox>
+        <checkbox label="Hide MenuBar" preference="gui-minify-pref-menubar" id="opt-menubar" checked="true"/>
+      </hbox>
+      <hbox>
+        <checkbox label="Hide NavigationBar" preference="gui-minify-pref-addrbar" id="opt-addrbar" checked="true"/>
+      </hbox>
       <hbox align="center">
-        <checkbox label="Hide the tab bar" preference="gui-minify-pref-tabbar" id="opt-tabbar" />
-      </hbox>
-      <hbox>
-        <checkbox label="Hide the address bar" preference="gui-minify-pref-addrbar" id="opt-addrbar" />
-      </hbox>
-      <hbox>
-        <checkbox label="Hide the menu bar" preference="gui-minify-pref-menubar" id="opt-menubar" />
+        <checkbox label="Hide TabBar" preference="gui-minify-pref-tabbar" id="opt-tabbar" checked="true"/>
       </hbox>
     </vbox>
-  </prefpane>
+
+    <vbox style="margin-top: 30px">
+      <label style="font-weight: bold; font-size: 120%" value="Key bindings:" disabled="true"/>
+    </vbox>
+    <vbox style="margin-top: 5px">
+      <hbox>
+        <button label="Select key" disabled="true"/> 
+        <textbox id="txtKeyCode" disabled="true" style="width: 35px;" value="0"/>
+      </hbox>
+    </vbox>
+
+
  
+      </tabpanel>
+        <tabpanel orient="vertical">
+          <vbox style="margin-top: 15px">
+            <label style="font-weight: bold; font-size: 120%; margin-bottom: 15px">Special thanks to:</label>
+            <description>
+              Luca Greco a.k.a. RPL, that start me to XUL platform
+            </description>
+            <description>
+              Nico Delle Side a.k.a. DDS, for his precious contribution
+            </description>
+          </vbox>
+
+        </tabpanel>
+      </tabpanels>
+    </tabbox>
+
+
+  </prefpane>
 </prefwindow>
 

@@ -36,14 +36,23 @@ var tryshow = function(ch_state){
   if (ch_state==null)
     last_state = 1;
 
+  //TABBAR
   if (gBrowser.mTabs.length>1)
     gBrowser.setStripVisibilityTo(true);
-  gNavToolbox.setAttribute("collapsed", false);
-  //Save state
+  //NAVBAR
+  document.getElementById("nav-bar").setAttribute("collapsed",false);
+  //MENUBAR
+  document.getElementById("toolbar-menubar").setAttribute("collapsed",false);
 };
   
 
 var tryhide = function(ch_state){
+  if (
+    !Application.prefs.getValue("gui_minify.tabbar", true)&&
+    !Application.prefs.getValue("gui_minify.addrbar", true)&&
+    !Application.prefs.getValue("gui_minify.menubar", true)
+  ) return;
+
   if (ch_state==null)
     last_state = 0;
 
@@ -56,9 +65,15 @@ var tryhide = function(ch_state){
   */
   if (last_state) return;
 
-  gBrowser.setStripVisibilityTo(false);
-  gNavToolbox.setAttribute("collapsed", true);
-  //Save state
+  //TABBAR
+  if (Application.prefs.getValue("gui_minify.tabbar", true))
+    gBrowser.setStripVisibilityTo(false);
+  //NAVBAR
+  if (Application.prefs.getValue("gui_minify.addrbar", true))
+    document.getElementById("nav-bar").setAttribute("collapsed",true);
+  //MENUBAR
+  if (Application.prefs.getValue("gui_minify.menubar", true))
+    document.getElementById("toolbar-menubar").setAttribute("collapsed",true);
 };
 
       
@@ -75,7 +90,7 @@ window.addEventListener("load",
         var gmKeyCode = Application.prefs.getValue("gui_minify.keycode", true);
         if (keypressed) return;
         if ((event.keyCode == gmKeyCode) && !event.ctrlKey && !event.shiftKey && !event.metaKey){
-          if (gNavToolbox.getAttribute("collapsed")=="true")
+          if (last_state==0)
             tryshow();
           else
             tryhide();
