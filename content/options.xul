@@ -37,6 +37,8 @@
   title="Hide GUI Bars configuration"
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" style="width: 500px">
  
+  <script type="application/x-javascript" src="chrome://gui_minify/content/options.js"/>
+
   <prefpane id="gui-minify-pref-pane" label="Settings">
     <preferences>
       <preference id="gui-minify-pref-tabbar" name="gui_minify.tabbar" type="bool" instantApply="true"/>
@@ -73,12 +75,12 @@
     </vbox>
 
     <vbox style="margin-top: 30px">
-      <label style="font-weight: bold; font-size: 120%" value="Key bindings:" disabled="true"/>
+      <label style="font-weight: bold; font-size: 120%" value="Key bindings:"/>
     </vbox>
     <vbox style="margin-top: 5px">
       <hbox>
-        <button label="Select key" disabled="true"/> 
-        <textbox id="txtKeyCode" disabled="true" style="width: 35px;" value="Alt"/>
+        <button id="grab_key" label="Select key" oncommand="grabKey()" width="130px"/> 
+        <textbox id="txt_keycode" disabled="true" style="color: red; width: 65px;" value="ALT"/>
       </hbox>
     </vbox>
 
