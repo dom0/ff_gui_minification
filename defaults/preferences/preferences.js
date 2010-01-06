@@ -27,9 +27,12 @@
         # Suite 330, Boston, MA  02111-1307, USA.                       #
         #################################################################
 */
-
+//GENERALS
 pref("gui_minify.autohide", false);
 pref("gui_minify.autohidedelay", 1000);
-pref("gui_minify.enabled", true);
-pref("gui_minify.hideonstart", 2); // 0 = not hidden, 1 = hidden, 2 = remember last
 pref("gui_minify.keycode", 18);
+
+//SETTINGS
+pref("gui_minify.menubar", true);
+pref("gui_minify.addrbar", true);
+pref("gui_minify.tabbar", true);

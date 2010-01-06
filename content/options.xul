@@ -34,31 +34,29 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
  
 <prefwindow id="gui-minify-prefs"
-     title="GUI Minify Options"
-     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  title="GUI Minify Options"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" width="400px" height="300px">
  
-<prefpane id="gui-minify-pref-pane" label="Settings">
-  <preferences>
-    <preference id="gui-minify-pref-tabbar" name="gui-minify.tabbar"
-		type="bool" />
-    <preference id="gui-minify-pref-addrbar" name="gui-minify.addrbar"
-		type="bool" />
-    <preference id="gui-minify-pref-menubar" name="gui-minify.menubar"
-		type="bool"/>
-  </preferences>
- 
-  <vbox>
-    <hbox align="center">
-      <checkbox label="Hide the tab bar" preference="gui-minify-pref-tabbar" id="opt-tabbar" />
-    </hbox>
-    <hbox>
-      <checkbox label="Hide the address bar" preference="gui-minify-pref-addrbar" id="opt-addrbar" />
-    </hbox>
-    <hbox>
-      <checkbox label="Hide the menu bar" preference="gui-minify-pref-menubar" id="opt-menubar" />
-    </hbox>
-  </vbox>
-</prefpane>
+  <prefpane id="gui-minify-pref-pane" label="Settings">
+    <preferences>
+      <preference id="gui-minify-pref-tabbar" name="gui_minify.tabbar" type="bool" instantApply="true"/>
+      <preference id="gui-minify-pref-addrbar" name="gui_minify.addrbar" type="bool" instantApply="true"/>
+      <preference id="gui-minify-pref-menubar" name="gui_minify.menubar" type="bool" instantApply="true"/>
+      <preference id="gui-minify-pref-keycode" name="gui_minify.keycode" type="bool" instantApply="true"/>
+    </preferences>
+   
+    <vbox>
+      <hbox align="center">
+        <checkbox label="Hide the tab bar" preference="gui-minify-pref-tabbar" id="opt-tabbar" />
+      </hbox>
+      <hbox>
+        <checkbox label="Hide the address bar" preference="gui-minify-pref-addrbar" id="opt-addrbar" />
+      </hbox>
+      <hbox>
+        <checkbox label="Hide the menu bar" preference="gui-minify-pref-menubar" id="opt-menubar" />
+      </hbox>
+    </vbox>
+  </prefpane>
  
 </prefwindow>
 

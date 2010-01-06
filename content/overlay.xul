@@ -37,13 +37,14 @@
 
 <overlay id="hideNavbarOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-<script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
-<script type="application/x-javascript" src="chrome://gui_minify/content/overlay.js"/>
+  <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
+  <script type="application/x-javascript" src="chrome://gui_minify/content/overlay.js"/>
 
-<!--CTRL+L-->
-<command id="Browser:OpenLocation" oncommand="tryshow();openLocation();"/>
+  <!-- CTRL+L -->
+  <command id="Browser:OpenLocation" oncommand="tryshow(false);openLocation();"/>
 
-<!--URL BAR-->
-<textbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="urlbar" ontextentered="tryhide();this.handleCommand(param);"/>
+  <!-- ENTER PRESSED ON URL BAR -->
+  <textbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="urlbar" 
+    ontextentered="tryhide(false);this.handleCommand(param);"/>
 
 </overlay>

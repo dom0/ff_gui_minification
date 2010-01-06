@@ -29,59 +29,64 @@
         #################################################################
 */ 
 
-var last_state = 1; //1 = show, -1 = hide
+var last_state = 1; //1 = show, 0 = hide
 var keypressed = false;
 
-var tryshow = function(){
-	if (gBrowser.mTabs.length>1)
-		gBrowser.setStripVisibilityTo(true);
-	gNavToolbox.setAttribute("collapsed", false);
-	//Save state
-};
-	
+var tryshow = function(ch_state){
+  if (ch_state==null)
+    last_state = 1;
 
-var tryhide = function(){
-	if (last_state>0) return;
-	gBrowser.setStripVisibilityTo(false);
-	gNavToolbox.setAttribute("collapsed", true);
-	//Save state
+  if (gBrowser.mTabs.length>1)
+    gBrowser.setStripVisibilityTo(true);
+  gNavToolbox.setAttribute("collapsed", false);
+  //Save state
+};
+  
+
+var tryhide = function(ch_state){
+  if (ch_state==null)
+    last_state = 0;
+
+  /*
+    Gestione del CTRL-L da GUI hidden (v.di overlay.xul)
+    Nota: (in overlay.xul)
+      al CTRL-L è agganciata la tryshow(false) e all'evento enterText la tryhide(false).
+      In questo modo se viene premuto CRTL-L da gui hidden l'interfaccia viene mostrata 
+      solo momentaneamente.
+  */
+  if (last_state) return;
+
+  gBrowser.setStripVisibilityTo(false);
+  gNavToolbox.setAttribute("collapsed", true);
+  //Save state
 };
 
-			
+      
 window.addEventListener("load",
-	function(event){
-		var gmEnabled = Application.prefs.getValue("gui_minify.enabled", true);
-	
-		window.addEventListener("keydown",function(event){
-  			keypressed = false;
-			//Alt not alone...
-			if (event.altKey) keypressed = true;
-		},false);
+  function(event){
+    window.addEventListener("keydown",function(event){
+        keypressed = false;
+      //Alt not alone...
+      if (event.altKey) keypressed = true;
+    },false);
 
-		window.addEventListener("keyup",
-			function(event) {
-		
-				var gmKeyCode = Application.prefs.getValue("gui_minify.keycode", true);
-		
-				if (keypressed) return;
-		
-				if ((event.keyCode == gmKeyCode) && !event.ctrlKey && !event.shiftKey && !event.metaKey){
-					if (gNavToolbox.getAttribute("collapsed")=="true") {
-						last_state = -last_state;
-						tryshow();
-					} else {
-						last_state = -last_state;
-						tryhide();
-					}
-				}
-			}
-		, true);
-		
-	        //OpenURL and TabClose event handlers...	
-		var container = gBrowser.tabContainer;
-		container.addEventListener("TabOpen", tryshow, false);
-		//gNavToolbox.addEventListener("click", function(){alert("pippo")},false);
-		gNavToolbox.addEventListener("blur", function(){alert("pippo")},false);
-		//container.addEventListener("TabClose", tryhide, false);
-	}
+    window.addEventListener("keyup",
+      function(event) {
+        var gmKeyCode = Application.prefs.getValue("gui_minify.keycode", true);
+        if (keypressed) return;
+        if ((event.keyCode == gmKeyCode) && !event.ctrlKey && !event.shiftKey && !event.metaKey){
+          if (gNavToolbox.getAttribute("collapsed")=="true")
+            tryshow();
+          else
+            tryhide();
+        }
+      }
+    , true);
+    
+    //OpenURL event handler...  
+    var container = gBrowser.tabContainer;
+    container.addEventListener("TabOpen", tryshow, false);
+    //gNavToolbox.addEventListener("click", function(){alert("pippo")},false);
+    //container.addEventListener("TabClose", tryhide, false);
+  }
 , false);
