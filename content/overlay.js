@@ -37,8 +37,9 @@ var tryshow = function(ch_state){
   if (ch_state == null)
     last_state = 1;
 
-  if (ch_state == false)
+  if (ch_state == false){
     temp_show = true;
+  };
 
   //TABBAR
   if (gBrowser.mTabs.length>1)
@@ -57,7 +58,7 @@ var tryhide = function(ch_state){
     !Application.prefs.getValue("gui_minify.menubar", true)
   ) return;
 
-  if (ch_state==null)
+  if ((ch_state==null)||(temp_show))
     last_state = 0;
 
   /*
@@ -67,7 +68,6 @@ var tryhide = function(ch_state){
       In questo modo se viene premuto CRTL-L da gui hidden l'interfaccia viene mostrata 
       solo momentaneamente.
   */
-  //if ((last_state)&&(!temp_show)) return;
   if (last_state) return;
 
 
@@ -101,10 +101,10 @@ window.addEventListener("load",
         var gmKeyCode = Application.prefs.getValue("gui_minify.keycode", true);
         if (keypressed) return;
         if ((event.keyCode == gmKeyCode) && !event.ctrlKey && !event.shiftKey && !event.metaKey){
-          if (last_state==0)
-            tryshow();
-          else
+          if ((last_state==1)||(temp_show))
             tryhide();
+          else
+            tryshow();
         }
       }
     , true);
