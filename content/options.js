@@ -3,11 +3,21 @@ var changeKey = function(event){
 	  if ((i!="keyCode")&&(i!="which")&&(event[i]==event.keyCode)){
       var key = i.split("_");
       key = key[key.length-1];
-  		document.getElementById("txt_keycode").value=key;
+      var comb = Array();
+      if (event.metaKey)
+      	comb.push("META");
+      if (event.ctrlKey)
+      	comb.push("CTRL");
+      if (event.altKey)
+      	comb.push("ALT");
+      comb.push(key);
+			
+  		document.getElementById("txt_keycode").value=comb.join("-");
     }
   }
   window.removeEventListener("keyup",changeKey, false);
   document.getElementById("grab_key").label="Select Key";
+
   event.cancelBubble = true;
 	if (event.stopPropagation) event.stopPropagation();
 }

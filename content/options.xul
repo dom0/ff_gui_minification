@@ -80,7 +80,7 @@
     <vbox style="margin-top: 5px">
       <hbox>
         <button id="grab_key" label="Select key" oncommand="grabKey()" width="130px"/> 
-        <textbox id="txt_keycode" disabled="true" style="color: red; width: 65px;" value="ALT"/>
+        <textbox id="txt_keycode" disabled="true" style="color: red; width: 85px;" value="ALT"/>
       </hbox>
     </vbox>
 
@@ -91,7 +91,7 @@
           <vbox style="margin-top: 15px">
             <label style="font-weight: bold; font-size: 120%; margin-bottom: 15px">Special thanks to:</label>
             <description>
-              Luca Greco a.k.a. RPL, that start me to XUL platform
+              Luca Greco a.k.a. RPL, that introduced me to XUL platform
             </description>
             <description>
               Nico Delle Side a.k.a. DDS, for his precious contribution
