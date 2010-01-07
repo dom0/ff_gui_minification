@@ -37,9 +37,9 @@ pref("gui_minify.menubar", true);
 pref("gui_minify.addrbar", true);
 pref("gui_minify.tabbar", true);
 
-pref("gui_minify.txtkey", "CTRL");
+pref("gui_minify.txtkey", "ALT");
 
-pref("gui_minify.altkey", false);
+pref("gui_minify.altkey", true);
 pref("gui_minify.ctrlkey", false);
 pref("gui_minify.metakey", false);
 pref("gui_minify.keycode", 18);
