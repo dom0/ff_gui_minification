@@ -32,30 +32,46 @@
 
 var changeKey = function(event){
   for (var i in event){
-	  if ((i!="keyCode")&&(i!="which")&&(event[i]==event.keyCode)){
+	  if ((i!="keyCode")&&(i!="which")&&(event[i]==event.keyCode)){ //FOUND!
       var key = i.split("_");
       key = key[key.length-1];
       var comb = Array();
       if (event.metaKey)
       	comb.push("META");
+     	Application.prefs.setValue("gui_minify.metakey", event.metaKey);
+			
       if (event.ctrlKey)
       	comb.push("CTRL");
+      Application.prefs.setValue("gui_minify.ctrlkey", event.ctrlKey);
+			
       if (event.altKey)
       	comb.push("ALT");
-      comb.push(key);
+      Application.prefs.setValue("gui_minify.altkey", event.altKey);
+			
+			if ((event.keyCode!=17)&&(event.keyCode!=18)&&(event.keyCode!=224))
+	      comb.push(key);
 			
   		document.getElementById("txt_keycode").value=comb.join("-");
+      Application.prefs.setValue("gui_minify.txtkey", comb.join("-"));
+      Application.prefs.setValue("gui_minify.keycode", event.keyCode);
+			break;
     }
   }
-  window.removeEventListener("keyup",changeKey, false);
+  window.removeEventListener("keyup",changeKey, true);
   document.getElementById("grab_key").label="Select Key";
 
-  event.cancelBubble = true;
-	if (event.stopPropagation) event.stopPropagation();
+	event.stopPropagation();
+  return false;
 }
+
 
 var grabKey = function(){
   document.getElementById("txt_keycode").value="";
   document.getElementById("grab_key").label="Press a Key..";
-  window.addEventListener("keyup", changeKey,false);
+  //document.getElementById("grab_key").blur();
+  window.addEventListener("keyup", changeKey,true);
 }
+
+
+
+var setPrefs = function(){}

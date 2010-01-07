@@ -44,10 +44,10 @@
       <preference id="gui-minify-pref-tabbar" name="gui_minify.tabbar" type="bool" instantApply="true"/>
       <preference id="gui-minify-pref-addrbar" name="gui_minify.addrbar" type="bool" instantApply="true"/>
       <preference id="gui-minify-pref-menubar" name="gui_minify.menubar" type="bool" instantApply="true"/>
-      <preference id="gui-minify-pref-keycode" name="gui_minify.keycode" type="bool" instantApply="true"/>
+      <preference id="gui-minify-pref-keystring" name="gui_minify.txtkey" type="string" instantApply="true"/>
     </preferences>
 
-    <description id="title" value="Hide GUI Bars" style="font-size: 200%; font-weight: bold; margin-bottom: 15px"/>
+    <description id="title" value="Hide GUI Bars configuration" style="font-size: 200%; font-weight: bold; margin-bottom: 15px"/>
  
     <tabbox>
       <tabs>
@@ -80,7 +80,7 @@
     <vbox style="margin-top: 5px">
       <hbox>
         <button id="grab_key" label="Select key" oncommand="grabKey()" width="130px"/> 
-        <textbox id="txt_keycode" disabled="true" style="color: red; width: 85px;" value="ALT"/>
+        <textbox id="txt_keycode" disabled="true" preference="gui-minify-pref-keystring" style="color: red; width: 105px;"/>
       </hbox>
     </vbox>
 

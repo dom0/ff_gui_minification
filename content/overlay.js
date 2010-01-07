@@ -91,16 +91,31 @@ window.addEventListener("load",
     tryhide(false);
 
     window.addEventListener("keydown",function(event){
-        keypressed = false;
+      keypressed = false;
+
       //Alt not alone...
-      if (event.altKey) keypressed = true;
+      var gmKeyCode = Application.prefs.getValue("gui_minify.keycode", true);
+      if ((event.altKey)&&(gmKeyCode==18))
+				keypressed = true;
+      if ((event.ctrlKey)&&(gmKeyCode==17))
+				keypressed = true;
     },false);
+
 
     window.addEventListener("keyup",
       function(event) {
         var gmKeyCode = Application.prefs.getValue("gui_minify.keycode", true);
-        if (keypressed) return;
-        if ((event.keyCode == gmKeyCode) && !event.ctrlKey && !event.shiftKey && !event.metaKey){
+        var gmAltKey = Application.prefs.getValue("gui_minify.altkey", true);
+        var gmCtrlKey = Application.prefs.getValue("gui_minify.ctrlkey", true);
+        var gmMetaKey = Application.prefs.getValue("gui_minify.metakey", true);
+			
+				//if (keypressed) return;
+
+        if ((!keypressed)&&(event.keyCode == gmKeyCode) && 
+					(event.altKey == gmAltKey) && 
+					(event.ctrlKey == gmCtrlKey) && 
+					(event.metaKey == gmMetaKey))
+				{
           if ((last_state==1)||(temp_show))
             tryhide();
           else
