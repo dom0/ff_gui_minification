@@ -49,9 +49,10 @@ var HGBStatusBar = {
       if ((!Application.prefs.getValue("gui_minify.statusbar", false))||
           (!Application.prefs.getValue("gui_minify.sblink", false))||
 					(HGBExtension.last_state)||
-					(HGBExtension.temp_show))
+					(HGBExtension.temp_show)){
+				HGBStatusBar.origOverLink.call(this, link, b);
 				return;
-			
+			}
 			document.getElementById("hgb-linkurl").value = link;
 		  if ((link == "")||(!link)||(link == undefined))
 				HGBStatusBar._closePopup("hgb-lu");
