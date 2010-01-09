@@ -35,7 +35,9 @@
 
 <!DOCTYPE overlay >
 
-<overlay id="hideNavbarOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<overlay id="hideNavbarOverlay" 
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+	xmlns:html="http://www.w3.org/1999/xhtml">
 
   <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
   <script type="application/x-javascript" src="chrome://gui_minify/content/overlay.js"/>
@@ -50,5 +52,13 @@
 	<statusbarpanel class="statusbarpanel-progress" id="statusbar-progresspanel" collapsed="false">
 		<progressmeter class="progressmeter-statusbar" id="statusbar-icon" mode="normal" value="0"/>
 	</statusbarpanel>
+
+  <popupset id="mainPopupSet">
+    <panel id="alca-hidegb-msg-panel" noautohide="true"> 
+			<progressmeter id="myprogressbar" mode="normal" value="0" width="150px" height="5px"/>
+			<label id="mylinkurl" style="width: 300px; height: 20px;"/>
+    </panel>     
+  </popupset>
+
 
 </overlay>

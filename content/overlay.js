@@ -32,6 +32,7 @@
 var last_state = 1; //1 = show, 0 = hide
 var keypressed = false;
 var temp_show = false;
+var origOverLink = null;
 
 var tryshow = function(ch_state){
   if (ch_state == null)
@@ -149,6 +150,66 @@ window.addEventListener("load",
 		//Chiusura di chiusura di un tab
     container.addEventListener("TabClose", function(){ if (last_state==0) tryhide(false); }, false);
 
+    //CUSTOM PROGRESS BAR
+	  gBrowser.addProgressListener(myListener, Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT);
 
+	  //CUSTOM LINK URL
+		origOverLink = XULBrowserWindow.setOverLink;
+		XULBrowserWindow.setOverLink = function (link, b){
+			document.getElementById("mylinkurl").value = link;
+			origOverLink.call(this, link, b);
+		}
   }
 , false);
+
+
+
+
+const STATE_START = Components.interfaces.nsIWebProgressListener.STATE_START;
+const STATE_STOP = Components.interfaces.nsIWebProgressListener.STATE_STOP;
+var myListener = {
+  QueryInterface: function(aIID) {
+   if (aIID.equals(Components.interfaces.nsIWebProgressListener) ||
+       aIID.equals(Components.interfaces.nsISupportsWeakReference) ||
+       aIID.equals(Components.interfaces.nsISupports))
+     return this;
+   throw Components.results.NS_NOINTERFACE;
+  },
+
+  onStateChange: function(aWebProgress, aRequest, aFlag, aStatus) {
+   // If you use myListener for more than one tab/window, use
+   // aWebProgress.DOMWindow to obtain the tab/window which triggers the state change
+   if(aFlag & STATE_START) {
+     document.getElementById("myprogressbar").value = 0;
+     _openPopup();
+   }
+   if(aFlag & STATE_STOP) {
+     _closePopup();
+   }
+  },
+
+  onLocationChange: function(aProgress, aRequest, aURI) {
+   // This fires when the location bar changes; i.e load event is confirmed
+   // or when the user switches tabs. If you use myListener for more than one tab/window,
+   // use aProgress.DOMWindow to obtain the tab/window which triggered the change.
+  },
+
+  // For definitions of the remaining functions see related documentation
+  onProgressChange: function(aWebProgress, aRequest, curSelf, maxSelf, curTot, maxTot) { 
+    document.getElementById("myprogressbar").value = (curTot/maxTot*100);
+  },
+
+  onStatusChange: function(aWebProgress, aRequest, aStatus, aMessage) { },
+  onSecurityChange: function(aWebProgress, aRequest, aState) { }
+}
+
+  var _openPopup = function(){
+	  var popup = document.getElementById("alca-hidegb-msg-panel");
+	  var anchor = document.getElementById("content").selectedBrowser;
+	  popup.openPopup(anchor, "overlap", 5, anchor.clientHeight -20 , false, false);
+	}
+  
+	var _closePopup = function(){
+	  var popup = document.getElementById("alca-hidegb-msg-panel");
+		//popup.hidePopup();
+	}
