@@ -44,6 +44,15 @@
   <script type="application/x-javascript" src="chrome://gui_minify/content/statusbar-replacer.js"/>
   <script type="application/x-javascript" src="chrome://gui_minify/content/overlay.js"/>
 
+  <popupset id="mainPopupSet">
+    <tooltip id="hgb-pb" noautohide="true" style="background-color: #ff0000!important"> 
+			<progressmeter id="hgb-progressbar" mode="normal" value="0" width="150px"/>
+    </tooltip>     
+    <tooltip id="hgb-lu" noautohide="true" style="background-color: #ff0000!important"> 
+			<label id="hgb-linkurl" value="pippo"/>
+    </tooltip>     
+  </popupset>
+
   <!-- CTRL+L -->
   <command id="Browser:OpenLocation" oncommand="HGBExtension.tryshow(false);openLocation();"/>
 
@@ -55,18 +64,6 @@
 		<progressmeter class="progressmeter-statusbar" id="statusbar-icon" mode="normal" value="0"/>
 	</statusbarpanel>
 
-  <popupset id="mainPopupSet">
-    <panel id="hgb-panel" noautohide="true"> 
-      <hbox>
-      <vbox flex="1">
-				<progressmeter id="hgb-progressbar" mode="normal" value="0" width="150px" height="5px"/>
-      </vbox>
-      <vbox flex="1">
-				<label id="hgb-linkurl" style="padding-top:5px; height: 20px;" value="pippo"/>
-      </vbox>
-      </hbox>
-    </panel>     
-  </popupset>
 
 
 </overlay>

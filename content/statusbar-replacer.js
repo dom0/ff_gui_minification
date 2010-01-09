@@ -46,26 +46,38 @@ var HGBStatusBar = {
 		HGBStatusBar.origOverLink = XULBrowserWindow.setOverLink;
 
 		XULBrowserWindow.setOverLink = function (link, b){
-      if (Application.prefs.getValue("gui_minify.statusbar", true)){
-				document.getElementById("hgb-linkurl").value = link;
-		  	if ((link == "")||(!link)||(link == undefined))
-					HGBStatusBar._closePopup();
-				else
-	    		HGBStatusBar._openPopup();
-			}
+      if ((!Application.prefs.getValue("gui_minify.statusbar", false))||
+          (!Application.prefs.getValue("gui_minify.sblink", false))||
+					(HGBExtension.last_state)||
+					(HGBExtension.temp_show))
+				return;
+			
+			document.getElementById("hgb-linkurl").value = link;
+		  if ((link == "")||(!link)||(link == undefined))
+				HGBStatusBar._closePopup("hgb-lu");
+			else
+	    	HGBStatusBar._openPopup("hgb-lu");
+			
 			HGBStatusBar.origOverLink.call(this, link, b);
 		};
   },
 
 
-  _openPopup : function(){
-	  var popup = document.getElementById("hgb-panel");
+  _openPopup : function(what){
 	  var anchor = document.getElementById("content").selectedBrowser;
-	  popup.openPopup(anchor, "overlap", 5, anchor.clientHeight -30 , false, false);
+		var x = 1;
+		var y = anchor.clientHeight - 45;
+    if (what=="hgb-pb"){
+			var x = anchor.clientWidth - 169;
+			var y = anchor.clientHeight - 49;
+		}
+			
+	  var popup = document.getElementById(what);
+	  popup.openPopup(anchor, "overlap", x, y, false, false);
 	},
   
-	_closePopup : function(){
-	  var popup = document.getElementById("hgb-panel");
+	_closePopup : function(what){
+	  var popup = document.getElementById(what);
 		popup.hidePopup();
 	},
 
@@ -81,21 +93,27 @@ var HGBStatusBar = {
   	},
 
   	onStateChange: function(aWebProgress, aRequest, aFlag, aStatus) {
-      if (!Application.prefs.getValue("gui_minify.statusbar", true)) return;
+      if ((!Application.prefs.getValue("gui_minify.statusbar", false))||
+          (!Application.prefs.getValue("gui_minify.sbprogressbar", false))||
+					(HGBExtension.last_state)||
+					(HGBExtension.temp_show))
+				return;
   		if(aFlag & HGBStatusBar.STATE_START) {
-				document.getElementById("hgb-progressbar").collapsed=false;
   	  	document.getElementById("hgb-progressbar").value = 0;
-    		HGBStatusBar._openPopup();
+    		HGBStatusBar._openPopup("hgb-pb");
   		}
   		if(aFlag & HGBStatusBar.STATE_STOP) {
-				document.getElementById("hgb-progressbar").collapsed=true;
-    		HGBStatusBar._closePopup();
+    		HGBStatusBar._closePopup("hgb-pb");
   		}
 		},
 
 
   	onProgressChange: function(aWebProgress, aRequest, curSelf, maxSelf, curTot, maxTot) { 
-      if (!Application.prefs.getValue("gui_minify.statusbar", true)) return;
+      if ((!Application.prefs.getValue("gui_minify.statusbar", false))||
+          (!Application.prefs.getValue("gui_minify.sbprogressbar", false))||
+					(HGBExtension.last_state)||
+					(HGBExtension.temp_show))
+				return;
     	document.getElementById("hgb-progressbar").value = (curTot/maxTot*100);
   	},
 
