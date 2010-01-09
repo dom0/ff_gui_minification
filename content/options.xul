@@ -44,6 +44,7 @@
       <preference id="gui-minify-pref-tabbar" name="gui_minify.tabbar" type="bool" instantApply="true"/>
       <preference id="gui-minify-pref-addrbar" name="gui_minify.addrbar" type="bool" instantApply="true"/>
       <preference id="gui-minify-pref-menubar" name="gui_minify.menubar" type="bool" instantApply="true"/>
+      <preference id="gui-minify-pref-statusbar" name="gui_minify.statusbar" type="bool" instantApply="true"/>
       <preference id="gui-minify-pref-keystring" name="gui_minify.txtkey" type="string" instantApply="true"/>
     </preferences>
 
@@ -69,8 +70,11 @@
       <hbox>
         <checkbox label="Hide NavigationBar" preference="gui-minify-pref-addrbar" id="opt-addrbar" checked="true"/>
       </hbox>
-      <hbox align="center">
+      <hbox>
         <checkbox label="Hide TabBar" preference="gui-minify-pref-tabbar" id="opt-tabbar" checked="true"/>
+      </hbox>
+      <hbox>
+        <checkbox label="Hide StatusBar" preference="gui-minify-pref-statusbar" id="opt-statusbar" checked="true"/>
       </hbox>
     </vbox>
 

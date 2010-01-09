@@ -48,6 +48,8 @@ var tryshow = function(ch_state){
   document.getElementById("nav-bar").setAttribute("collapsed",false);
   //MENUBAR
   document.getElementById("toolbar-menubar").setAttribute("collapsed",false);
+  //STATUSBAR
+  document.getElementById("status-bar").setAttribute("collapsed",false);
 };
   
 
@@ -55,7 +57,8 @@ var tryhide = function(ch_state){
   if (
     !Application.prefs.getValue("gui_minify.tabbar", true)&&
     !Application.prefs.getValue("gui_minify.addrbar", true)&&
-    !Application.prefs.getValue("gui_minify.menubar", true)
+    !Application.prefs.getValue("gui_minify.menubar", true)&&
+    !Application.prefs.getValue("gui_minify.statusbar", true)
   ) return;
 
   if ((ch_state==null)||(temp_show))
@@ -80,6 +83,9 @@ var tryhide = function(ch_state){
   //MENUBAR
   if (Application.prefs.getValue("gui_minify.menubar", true))
     document.getElementById("toolbar-menubar").setAttribute("collapsed",true);
+  //STATUSBAR
+  if (Application.prefs.getValue("gui_minify.statusbar", true))
+    document.getElementById("status-bar").setAttribute("collapsed",true);
 
   temp_show = false;
 

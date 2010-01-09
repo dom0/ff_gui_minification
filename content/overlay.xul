@@ -44,7 +44,11 @@
   <command id="Browser:OpenLocation" oncommand="tryshow(false);openLocation();"/>
 
   <!-- ENTER PRESSED ON URL BAR -->
-  <textbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="urlbar" 
-    ontextentered="tryhide(false);this.handleCommand(param);"/>
+  <textbox id="urlbar" ontextentered="tryhide(false);this.handleCommand(param);"/>
+
+	<!-- ENABLE THE PROGRESS METER -->
+	<statusbarpanel class="statusbarpanel-progress" id="statusbar-progresspanel" collapsed="false">
+		<progressmeter class="progressmeter-statusbar" id="statusbar-icon" mode="normal" value="0"/>
+	</statusbarpanel>
 
 </overlay>
