@@ -55,8 +55,14 @@
 
   <popupset id="mainPopupSet">
     <panel id="alca-hidegb-msg-panel" noautohide="true"> 
-			<progressmeter id="myprogressbar" mode="normal" value="0" width="150px" height="5px"/>
-			<label id="mylinkurl" style="width: 300px; height: 20px;"/>
+      <hbox>
+      <vbox flex="1">
+				<progressmeter id="myprogressbar" mode="normal" value="0" width="150px" height="5px"/>
+      </vbox>
+      <vbox flex="1">
+				<label id="mylinkurl" style="padding-top:5px; height: 20px;" value="pippo"/>
+      </vbox>
+      </hbox>
     </panel>     
   </popupset>
 

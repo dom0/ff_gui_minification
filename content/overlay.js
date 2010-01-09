@@ -157,6 +157,10 @@ window.addEventListener("load",
 		origOverLink = XULBrowserWindow.setOverLink;
 		XULBrowserWindow.setOverLink = function (link, b){
 			document.getElementById("mylinkurl").value = link;
+      if ((link == "")||(!link)||(link == undefined))
+				_closePopup();
+			else
+	      _openPopup();
 			origOverLink.call(this, link, b);
 		}
   }
@@ -177,16 +181,18 @@ var myListener = {
   },
 
   onStateChange: function(aWebProgress, aRequest, aFlag, aStatus) {
-   // If you use myListener for more than one tab/window, use
-   // aWebProgress.DOMWindow to obtain the tab/window which triggers the state change
-   if(aFlag & STATE_START) {
-     document.getElementById("myprogressbar").value = 0;
-     _openPopup();
-   }
-   if(aFlag & STATE_STOP) {
-     _closePopup();
-   }
-  },
+   	// If you use myListener for more than one tab/window, use
+   	// aWebProgress.DOMWindow to obtain the tab/window which triggers the state change
+  	if(aFlag & STATE_START) {
+			document.getElementById("myprogressbar").collapsed=false;
+    	document.getElementById("myprogressbar").value = 0;
+    	_openPopup();
+  	}
+  	if(aFlag & STATE_STOP) {
+			document.getElementById("myprogressbar").collapsed=true;
+    	_closePopup();
+  	}
+	},
 
   onLocationChange: function(aProgress, aRequest, aURI) {
    // This fires when the location bar changes; i.e load event is confirmed
@@ -206,10 +212,10 @@ var myListener = {
   var _openPopup = function(){
 	  var popup = document.getElementById("alca-hidegb-msg-panel");
 	  var anchor = document.getElementById("content").selectedBrowser;
-	  popup.openPopup(anchor, "overlap", 5, anchor.clientHeight -20 , false, false);
+	  popup.openPopup(anchor, "overlap", 5, anchor.clientHeight -30 , false, false);
 	}
   
 	var _closePopup = function(){
 	  var popup = document.getElementById("alca-hidegb-msg-panel");
-		//popup.hidePopup();
+		popup.hidePopup();
 	}
