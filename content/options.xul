@@ -53,6 +53,7 @@
     <tabbox>
       <tabs>
         <tab label="Options" selected="true"/>
+        <tab label="Statusbar replacer"/>
         <tab label="Credits"/>
       </tabs>
 
@@ -87,10 +88,10 @@
         <textbox id="txt_keycode" disabled="true" preference="gui-minify-pref-keystring" style="color: red; width: 105px;"/>
       </hbox>
     </vbox>
-
-
- 
       </tabpanel>
+
+
+
         <tabpanel orient="vertical">
           <vbox style="margin-top: 15px">
             <label style="font-weight: bold; font-size: 120%; margin-bottom: 15px">Special thanks to:</label>

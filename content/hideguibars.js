@@ -99,11 +99,12 @@ var HGBExtension = {
 
 
 	tabOpenHandler : function(event){
+    var extension = HGBExtension;
   	event.data.events.addListener('load', function(event){
 			if (event.data.uri.spec!="about:blank")
 				return;
-			if (HGBExtension.last_state==0){ 
-				HGBExtension.tryshow(false);
+			if (extension.last_state==0){ 
+				extension.tryshow(false);
 				document.getElementById("urlbar").focus();
     	}
   	},false);
