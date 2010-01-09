@@ -40,6 +40,8 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 
   <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
+  <script type="application/x-javascript" src="chrome://gui_minify/content/hideguibars.js"/>
+  <script type="application/x-javascript" src="chrome://gui_minify/content/statusbar-replacer.js"/>
   <script type="application/x-javascript" src="chrome://gui_minify/content/overlay.js"/>
 
   <!-- CTRL+L -->
@@ -54,13 +56,13 @@
 	</statusbarpanel>
 
   <popupset id="mainPopupSet">
-    <panel id="alca-hidegb-msg-panel" noautohide="true"> 
+    <panel id="hgb-panel" noautohide="true"> 
       <hbox>
       <vbox flex="1">
-				<progressmeter id="myprogressbar" mode="normal" value="0" width="150px" height="5px"/>
+				<progressmeter id="hgb-progressbar" mode="normal" value="0" width="150px" height="5px"/>
       </vbox>
       <vbox flex="1">
-				<label id="mylinkurl" style="padding-top:5px; height: 20px;" value="pippo"/>
+				<label id="hgb-linkurl" style="padding-top:5px; height: 20px;" value="pippo"/>
       </vbox>
       </hbox>
     </panel>     
