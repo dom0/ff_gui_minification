@@ -53,7 +53,12 @@ var HGBStatusBar = {
 				HGBStatusBar.origOverLink.call(this, link, b);
 				return;
 			}
-			document.getElementById("hgb-linkurl").value = link;
+			var str = link;
+			if (link.length > 120 ){
+				str = link.substring(0,120);
+				str += "...";
+			}
+			document.getElementById("hgb-linkurl").value = str;
 		  if ((link == "")||(!link)||(link == undefined))
 				HGBStatusBar._closePopup("hgb-lu");
 			else
