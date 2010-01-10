@@ -31,7 +31,7 @@
         #################################################################
 -->
 
-<?xml-stylesheet type="text/css" href="chrome://reloadchrome/content/button.css"?>
+<?xml-stylesheet type="text/css" href="chrome://gui_minify/content/overlay.css"?>
 
 <!DOCTYPE overlay >
 
@@ -45,11 +45,11 @@
   <script type="application/x-javascript" src="chrome://gui_minify/content/overlay.js"/>
 
   <popupset id="mainPopupSet">
-    <tooltip id="hgb-pb" noautohide="true" style="background-color: #ff0000!important"> 
+    <tooltip id="hgb-pb" noautohide="true" class="my-tooltip"> 
 			<progressmeter id="hgb-progressbar" mode="normal" value="0" width="150px"/>
     </tooltip>     
-    <tooltip id="hgb-lu" noautohide="true" style="background-color: #ff0000!important"> 
-			<label id="hgb-linkurl" value="pippo"/>
+    <tooltip id="hgb-lu" noautohide="true" class="my-tooltip"> 
+			<label id="hgb-linkurl"/>
     </tooltip>     
   </popupset>
 

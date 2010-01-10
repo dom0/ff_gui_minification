@@ -36,7 +36,7 @@ var HGBStatusBar = {
   STATE_START : Components.interfaces.nsIWebProgressListener.STATE_START,
   STATE_STOP : Components.interfaces.nsIWebProgressListener.STATE_STOP,
   
-  
+	last_timeout_id : null,
 
   init: function() {
 		//CUSTOM PROGRESS BAR
@@ -58,12 +58,13 @@ var HGBStatusBar = {
 				str = link.substring(0,120);
 				str += "...";
 			}
-			document.getElementById("hgb-linkurl").value = str;
-		  if ((link == "")||(!link)||(link == undefined))
-				HGBStatusBar._closePopup("hgb-lu");
-			else
+		  if ((link == "")||(!link)||(link == undefined)){
+        HGBStatusBar.last_timeout_id = setTimeout('HGBStatusBar._closePopup("hgb-lu")', 500);
+			} else {
+				document.getElementById("hgb-linkurl").value = str;
+	      clearTimeout(HGBStatusBar.last_timeout_id);
 	    	HGBStatusBar._openPopup("hgb-lu");
-			
+			}
 			HGBStatusBar.origOverLink.call(this, link, b);
 		};
   },
