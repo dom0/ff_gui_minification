@@ -59,7 +59,7 @@ var HGBStatusBar = {
 				str += "...";
 			}
 		  if ((link == "")||(!link)||(link == undefined)){
-        HGBStatusBar.last_timeout_id = setTimeout('HGBStatusBar._closePopup("hgb-lu")', 500);
+        HGBStatusBar.last_timeout_id = setTimeout(function(){HGBStatusBar._closePopup("hgb-lu")}, 500);
 			} else {
 				document.getElementById("hgb-linkurl").value = str;
 	      clearTimeout(HGBStatusBar.last_timeout_id);
@@ -72,11 +72,12 @@ var HGBStatusBar = {
 
   _openPopup : function(what){
 	  var anchor = document.getElementById("content").selectedBrowser;
-		var x = 1;
-		var y = anchor.clientHeight - 46;
+		var x = 2;
+		var y = anchor.clientHeight - 27;
     if (what=="hgb-pb"){
-			var x = anchor.clientWidth - 169;
-			var y = anchor.clientHeight - 50;
+			//var x = anchor.clientWidth - 169;
+			HGBStatusBar._closePopup("hgb-lu");
+			var y = anchor.clientHeight - 27;
 		}
 			
 	  var popup = document.getElementById(what);
@@ -106,7 +107,7 @@ var HGBStatusBar = {
 					(HGBExtension.temp_show))
 				return;
   		if(aFlag & HGBStatusBar.STATE_START) {
-  	  	document.getElementById("hgb-progressbar").value = 0;
+  	  	document.getElementById("hgb-progressbar").style.width = 0 + "px";
     		HGBStatusBar._openPopup("hgb-pb");
   		}
   		if(aFlag & HGBStatusBar.STATE_STOP) {
@@ -121,7 +122,7 @@ var HGBStatusBar = {
 					(HGBExtension.last_state)||
 					(HGBExtension.temp_show))
 				return;
-    	document.getElementById("hgb-progressbar").value = (curTot/maxTot*100);
+    	document.getElementById("hgb-progressbar").style.width = (curTot/maxTot*100)*1.5 + "px";
   	},
 
   	onStatusChange: function(aWebProgress, aRequest, aStatus, aMessage) {},

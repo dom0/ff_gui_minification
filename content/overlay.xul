@@ -45,12 +45,20 @@
   <script type="application/x-javascript" src="chrome://gui_minify/content/overlay.js"/>
 
   <popupset id="mainPopupSet">
-    <tooltip id="hgb-pb" noautohide="true" class="my-tooltip"> 
-			<progressmeter id="hgb-progressbar" mode="normal" value="0" width="150px"/>
+    <tooltip id="hgb-pb" class="my-tooltip;" style="margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px"> 
+      <div style="background-color: black; height: 25px; width: 156px; margin: 0px 0px 0px 0px; padding: 3px 3px 3px 3px">
+			<!--progressmeter id="hgb-progressbar" mode="normal" value="0" width="150px"/-->
+				<div style="position: absolute; margin:: 3px 3px 3px 3px; border: 1px solid white; width: 150px">
+					<div id="hgb-progressbar" style="position: absolute; width: 0px; height: 100%; background-color: white"></div>
+				</div>
+			</div>
     </tooltip>     
-    <tooltip id="hgb-lu" noautohide="true" class="my-tooltip"> 
-			<label id="hgb-linkurl"/>
+    <tooltip id="hgb-lu" style="background-color: rgb(0,0,0)!important; height: 100%; width: 100%; margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px">
+      <div style="background-color: black; height: 25px; width: 100%; margin: 0px 0px 0px 0px; padding: 5px 5px 5px 0px">
+				<label id="hgb-linkurl" style="color: white"/>
+			</div>
     </tooltip>     
+
   </popupset>
 
   <!-- CTRL+L -->
