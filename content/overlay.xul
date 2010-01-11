@@ -54,7 +54,7 @@
   </popupset>
 
   <!-- CTRL+L -->
-  <command id="Browser:OpenLocation" oncommand="HGBExtension.tryshow(false);openLocation();"/>
+  <command id="Browser:OpenLocation" oncommand="if (!HGBExtension.last_state) HGBExtension.tryshow(false);openLocation();"/>
 
   <!-- ENTER PRESSED ON URL BAR -->
   <textbox id="urlbar" ontextentered="HGBExtension.tryhide(false);this.handleCommand(param);"/>
