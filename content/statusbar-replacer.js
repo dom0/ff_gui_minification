@@ -72,12 +72,12 @@ var HGBStatusBar = {
 
   _openPopup : function(what){
 	  var anchor = document.getElementById("content").selectedBrowser;
-		var x = 2;
-		var y = anchor.clientHeight - 27;
+		var x = 7;
+		var y = anchor.clientHeight - 25;
     if (what=="hgb-pb"){
-			//var x = anchor.clientWidth - 169;
+			var x = anchor.clientWidth - 180;
 			HGBStatusBar._closePopup("hgb-lu");
-			var y = anchor.clientHeight - 27;
+			var y = anchor.clientHeight - 25;
 		}
 			
 	  var popup = document.getElementById(what);
@@ -111,7 +111,7 @@ var HGBStatusBar = {
     		HGBStatusBar._openPopup("hgb-pb");
   		}
   		if(aFlag & HGBStatusBar.STATE_STOP) {
-    		HGBStatusBar._closePopup("hgb-pb");
+    		setTimeout("HGBStatusBar._closePopup('hgb-pb')",200);
   		}
 		},
 

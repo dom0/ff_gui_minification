@@ -1,4 +1,40 @@
-.my-tooltip {
-	background-color: red !important;
-	color: blue !important;
+.div-notify {
+	opacity: .9; 
+	-moz-border-radius-topleft: 11px; 
+	-moz-border-radius-topright: 11px; 
+	background-color: black; 
+	height: 25px; 
+	width: 100%; 
+	margin: 0px 0px 0px 0px; 
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+}
+
+.tooltip {
+	-moz-appearance: none; 
+	height: 100%; 
+	width: 100%; 
+	margin: 0px 0px 0px 0px; 
+	padding: 0px 0px 0px 0px;
+}
+
+.label {
+	color: white;
+}
+
+.pb-container {
+	top: 10px; 
+	border: 1px 
+	solid white; 
+	height: 3px; 
+	width: 150px; 
+	position: absolute;
+}
+
+#hgb-progressbar{
+	width: 0px; 
+	background-color: white; 
+	height: 3px; 
+	position: absolute;
 }
