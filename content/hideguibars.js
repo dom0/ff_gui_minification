@@ -42,6 +42,9 @@ var HGBExtension = {
 
 
 	tryshow : function(ch_state){
+		HGBStatusBar._closePopup("hgb-lu");
+		HGBStatusBar._closePopup("hgb-pb");
+
 	  if (ch_state == null)
 	    HGBExtension.last_state = 1;
 	
@@ -69,6 +72,7 @@ var HGBExtension = {
 	    !Application.prefs.getValue("gui_minify.statusbar", true)
 	  ) return;
 	
+
 	  if ((ch_state==null)||(HGBExtension.temp_show))
 	    HGBExtension.last_state = 0;
 	

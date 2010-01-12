@@ -39,6 +39,9 @@ var HGBStatusBar = {
 	last_timeout_id : null,
 
   init: function() {
+		HGBStatusBar._closePopup("hgb-lu");
+		HGBStatusBar._closePopup("hgb-pb");
+
 		//CUSTOM PROGRESS BAR
 		gBrowser.addProgressListener(this.listener, Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT);
 	
