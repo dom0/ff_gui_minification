@@ -74,14 +74,11 @@ var HGBStatusBar = {
 
 
   _openPopup : function(what){
-	  var anchor = document.getElementById("content").selectedBrowser;
+	  var anchor = document.getElementById("status-bar");
 		var x = 7;
 		var y = anchor.clientHeight - 25;
-    if (what=="hgb-pb"){
+    if (what=="hgb-pb")
 			var x = anchor.clientWidth - 180;
-			HGBStatusBar._closePopup("hgb-lu");
-			var y = anchor.clientHeight - 25;
-		}
 			
 	  var popup = document.getElementById(what);
 	  popup.openPopup(anchor, "overlap", x, y, false, false);
