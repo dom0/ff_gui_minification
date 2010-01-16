@@ -1,5 +1,38 @@
+v0.4.4.1
+FIX: changelog update
+
+v0.4.4
+FEATURE: Color customization in statusbar-replacer
+FIX: hiding bars on location change and temporary_show (newtab, ctrl-L..)
+
+v0.4.3.1
+FIX: tooltip are now themes-agnostics
+FIX: tooltip position now is relative to statusbar
+
+v0.4.3
+FEATURE: restyling of statusbar replacer
+FIX: persistent tooltip after tryshow or ff-reboot
+
+v0.4.2
+FIX: conditional tryhide after openLocation()
+FEATURE: restyling of statusbar replacer
+
+v0.4.1
+FIX: overlink tooltip broken for too long urls
+FIX: tooltip position
+FEATURE: added timeout to linkOver tooltip
+
+v0.4
+FEATURE: StatusBar replacer (progressbar and linkoverbar tooltips)
+
+v0.3.1
+FEATURE: added support to hiding statusbar
+
+v0.3
+FEATURE: customizable keybinding
+
 v0.2.1
-FIX: migliorata la gestione degli stati durante gli eventi OpenURL/TabOpen/TabClose
+FIX: better support to OpenURL/TabOpen/TabClose
 
 v0.2
 FEATURE: added some configuration options (now you can select what components have to be hidden)
