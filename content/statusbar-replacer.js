@@ -113,6 +113,9 @@ var HGBStatusBar = {
   	},
 
   	onStateChange: function(aWebProgress, aRequest, aFlag, aStatus) {
+			//Hide bars if location change and temp_show 
+			HGBExtension.tryhide(false);
+
       if ((!Application.prefs.getValue("gui_minify.statusbar", false))||
           (!Application.prefs.getValue("gui_minify.sbprogressbar", false))||
 					(HGBExtension.last_state)||

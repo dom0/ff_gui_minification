@@ -32,12 +32,13 @@
 
 var HGBExtension = {
 
-	last_state : 1, //1 = show, 0 = hide
+	last_state : 0, //1 = show, 0 = hide
 	keypressed : false,
 	temp_show : false,
 	
   init: function(){
-		HGBExtension.tryhide(false);
+		HGBExtension.toggleBars();
+		//document.getElementById("key-hide-all").setAttribute("key","2");
 	},
 
 
@@ -120,7 +121,7 @@ var HGBExtension = {
 			HGBExtension.tryhide(false);
 	},
 
-
+/*
 	keyUpHandler : function(event){
 	  var gmKeyCode = Application.prefs.getValue("gui_minify.keycode", true);
 	  var gmAltKey = Application.prefs.getValue("gui_minify.altkey", true);
@@ -132,10 +133,7 @@ var HGBExtension = {
 			(event.ctrlKey == gmCtrlKey) && 
 			(event.metaKey == gmMetaKey))
 		{
-	    if ((HGBExtension.last_state==1)||(HGBExtension.temp_show))
-	      HGBExtension.tryhide();
-	    else
-	      HGBExtension.tryshow();
+	      HGBExtension.toggleBars();
 	  }
 	},
 
@@ -149,5 +147,12 @@ var HGBExtension = {
    	if ((event.ctrlKey)&&(gmKeyCode==17))
  			HGBExtension.keypressed = true;
 	},
+*/
+	toggleBars : function(){
+	    if ((HGBExtension.last_state==1)||(HGBExtension.temp_show))
+	      HGBExtension.tryhide();
+	    else
+	      HGBExtension.tryshow();
+	}
 
 }
