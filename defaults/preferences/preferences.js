@@ -48,3 +48,5 @@ pref("gui_minify.keycode", 18);
 //STATUSBAR REPLACER
 pref("gui_minify.sblink", true);
 pref("gui_minify.sbprogressbar", true);
+pref("gui_minify.sbbgcolor", "#000000");
+pref("gui_minify.sbcolor", "#ffffff");

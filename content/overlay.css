@@ -22,7 +22,7 @@
 }
 
 .label {
-	color: white;
+	#color: white;
 }
 
 .pb-container {
@@ -36,7 +36,7 @@
 
 #hgb-progressbar{
 	width: 0px; 
-	background-color: white; 
+	#background-color: white; 
 	height: 3px; 
 	position: absolute;
 }

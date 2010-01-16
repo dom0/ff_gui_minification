@@ -48,6 +48,9 @@
       <preference id="gui-minify-pref-keystring" name="gui_minify.txtkey" type="string" instantApply="true"/>
       <preference id="gui-minify-pref-sbprogress" name="gui_minify.sbprogressbar" type="bool" instantApply="true"/>
       <preference id="gui-minify-pref-sblink" name="gui_minify.sblink" type="bool" instantApply="true"/>
+      <preference id="gui-minify-pref-sbcolor" name="gui_minify.sbcolor" type="string" instantApply="true" onchange="changePrefs()"/>
+      <preference id="gui-minify-pref-sbbgcolor" name="gui_minify.sbbgcolor" type="string" instantApply="true" onchange="changePrefs()"/>
+		
     </preferences>
 
     <description id="title" value="Hide GUI Bars configuration" style="font-size: 200%; font-weight: bold; margin-bottom: 15px"/>
@@ -103,6 +106,17 @@
       </hbox>
       <hbox>
         <checkbox label="Enable Loading-progress tooltip" preference="gui-minify-pref-sbprogress" id="opt-progress" checked="true"/>
+      </hbox>
+			<vbox style="height: 20px"/>
+      <hbox>
+				<label style="margin-top: 7px; width: 170px">Statusbar replacer color:</label>
+        <textbox flex="1" id="txt_sbcolor" preference="gui-minify-pref-sbcolor" style="width: 60px;"/>
+				<separator flex="3"/>
+      </hbox>
+      <hbox>
+				<label style="margin-top: 7px; width: 170px">Statusbar replacer background:</label>
+        <textbox  flex="1" id="txt_sbbgcolor" preference="gui-minify-pref-sbbgcolor" style="width: 60px;"/>
+				<separator flex="3"/>
       </hbox>
 	  </vbox>
 	</tabpanel>

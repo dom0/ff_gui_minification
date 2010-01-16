@@ -29,6 +29,11 @@
         #################################################################
 */ 
 
+var primary_win = null;
+
+window.addEventListener("load", function() {
+	primary_win = window.opener.opener;
+},false);
 
 var changeKey = function(event){
   for (var i in event){
@@ -73,5 +78,6 @@ var grabKey = function(){
 }
 
 
-
-var setPrefs = function(){}
+var changePrefs = function(){
+	primary_win.HGBStatusBar._changeSBColor();
+}

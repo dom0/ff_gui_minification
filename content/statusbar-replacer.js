@@ -42,6 +42,8 @@ var HGBStatusBar = {
 		HGBStatusBar._closePopup("hgb-lu");
 		HGBStatusBar._closePopup("hgb-pb");
 
+		HGBStatusBar._changeSBColor();
+
 		//CUSTOM PROGRESS BAR
 		gBrowser.addProgressListener(this.listener, Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT);
 	
@@ -72,6 +74,16 @@ var HGBStatusBar = {
 		};
   },
 
+
+	_changeSBColor : function(){
+		var p = document.querySelectorAll("div.div-notify");
+    for ( var i = 0; i < p.length; i++ ) {
+      p[i].style.backgroundColor = Application.prefs.getValue("gui_minify.sbbgcolor", true);
+      p[i].style.color = Application.prefs.getValue("gui_minify.sbcolor", true);
+    }
+		document.getElementById("border").style.borderColor=Application.prefs.getValue("gui_minify.sbcolor", true);
+		document.getElementById("hgb-progressbar").style.backgroundColor=Application.prefs.getValue("gui_minify.sbcolor", true);
+	},
 
   _openPopup : function(what){
 	  var anchor = document.getElementById("status-bar");
