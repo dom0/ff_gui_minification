@@ -1,3 +1,7 @@
+v0.4.5
+REFACTORING: keybinding and keypress handler
+FIX: now default keybinding is CTRL-Z
+
 v0.4.4.1
 FIX: changelog update
 
