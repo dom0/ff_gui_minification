@@ -39,11 +39,9 @@ pref("gui_minify.tabbar", true);
 pref("gui_minify.statusbar", true);
 
 //KEYBINDINGS
-pref("gui_minify.txtkey", "ALT");
-pref("gui_minify.altkey", true);
-pref("gui_minify.ctrlkey", false);
-pref("gui_minify.metakey", false);
-pref("gui_minify.keycode", 18);
+pref("gui_minify.txtkey", "CTRL-Z);
+pref("gui_minify.modifiers", "control");
+pref("gui_minify.keycode", "90");
 
 //STATUSBAR REPLACER
 pref("gui_minify.sblink", true);

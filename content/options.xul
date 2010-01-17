@@ -85,11 +85,11 @@
     </vbox>
 
     <vbox style="margin-top: 30px">
-      <label style="font-weight: bold; font-size: 120%" value="Key bindings:"/>
+      <label style="font-weight: bold; font-size: 120%" value="Key bindings (allowed only keystrokes):"/>
     </vbox>
     <vbox style="margin-top: 5px">
       <hbox>
-        <button id="grab_key" label="Select key" oncommand="grabKey()" width="130px"/> 
+        <button id="grab_key" label="Select key" width="130px"/> 
         <textbox id="txt_keycode" disabled="true" preference="gui-minify-pref-keystring" style="color: red; width: 105px;"/>
       </hbox>
     </vbox>

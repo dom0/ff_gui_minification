@@ -44,16 +44,6 @@
   <script type="application/x-javascript" src="chrome://gui_minify/content/statusbar-replacer.js"/>
   <script type="application/x-javascript" src="chrome://gui_minify/content/overlay.js"/>
 
-	<keyset>
-  	<key id="key-hide-all" modifiers="control" key="z" oncommand="HGBExtension.toggleBars()"/>
-  	<!--key id="key-hide-menu" modifiers="control alt" key="1" oncommand="HGBExtension.toggleBars()"/>
-  	<key id="key-hide-nav" modifiers="control alt" key="2" oncommand="HGBExtension.toggleBars()"/>
-  	<key id="key-hide-tab" modifiers="control alt" key="3" oncommand="HGBExtension.toggleBars()"/>
-  	<key id="key-hide-status" modifiers="control alt" key="4" oncommand="HGBExtension.toggleBars()"/-->
-	</keyset>
-
-
-
   <popupset id="mainPopupSet">
     <tooltip id="hgb-pb" class="tooltip"> 
       <div class="div-notify" style="position: absolute; width: 173px">
@@ -67,16 +57,9 @@
 				<label id="hgb-linkurl" class="label"/>
 			</div>
     </tooltip>     
-
   </popupset>
 
   <!-- CTRL+L -->
   <command id="Browser:OpenLocation" oncommand="if (!HGBExtension.last_state) HGBExtension.tryshow(false);openLocation();"/>
-
-  <!-- ENTER PRESSED ON URL BAR -->
-  <!--textbox id="urlbar" ontextentered="HGBExtension.tryhide(false);this.handleCommand(param);"/-->
-
-
-
 
 </overlay>

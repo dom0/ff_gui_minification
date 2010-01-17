@@ -33,12 +33,11 @@
 var HGBExtension = {
 
 	last_state : 0, //1 = show, 0 = hide
-	keypressed : false,
 	temp_show : false,
 	
   init: function(){
 		HGBExtension.toggleBars();
-		//document.getElementById("key-hide-all").setAttribute("key","2");
+		//HGBExtension.keybind();
 	},
 
 
@@ -121,33 +120,23 @@ var HGBExtension = {
 			HGBExtension.tryhide(false);
 	},
 
-/*
 	keyUpHandler : function(event){
-	  var gmKeyCode = Application.prefs.getValue("gui_minify.keycode", true);
-	  var gmAltKey = Application.prefs.getValue("gui_minify.altkey", true);
-	  var gmCtrlKey = Application.prefs.getValue("gui_minify.ctrlkey", true);
-	  var gmMetaKey = Application.prefs.getValue("gui_minify.metakey", true);
-	
-	  if ((!HGBExtension.keypressed)&&(event.keyCode == gmKeyCode) && 
-			(event.altKey == gmAltKey) && 
-			(event.ctrlKey == gmCtrlKey) && 
-			(event.metaKey == gmMetaKey))
+	  var gmKey = Application.prefs.getValue("gui_minify.keycode", true);
+	  var gmModifiers = Application.prefs.getValue("gui_minify.modifiers", true);
+		
+		var alt = gmModifiers.search("ALT")>=0;
+		var ctrl = gmModifiers.search("CTRL")>=0;
+		var meta = gmModifiers.search("META")>=0;
+
+	  if((event.keyCode == gmKey) && 
+			(event.altKey == alt) && 
+			(event.ctrlKey == ctrl) && 
+			(event.metaKey == meta))
 		{
 	      HGBExtension.toggleBars();
 	  }
 	},
 
-
-	keyDownHandler : function(event){
-   	HGBExtension.keypressed = false;
-   	//Alt not alone...
-   	var gmKeyCode = Application.prefs.getValue("gui_minify.keycode", true);
-   	if ((event.altKey)&&(gmKeyCode==18))
- 			HGBExtension.keypressed = true;
-   	if ((event.ctrlKey)&&(gmKeyCode==17))
- 			HGBExtension.keypressed = true;
-	},
-*/
 	toggleBars : function(){
 	    if ((HGBExtension.last_state==1)||(HGBExtension.temp_show))
 	      HGBExtension.tryhide();

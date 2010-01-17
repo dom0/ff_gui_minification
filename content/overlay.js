@@ -34,8 +34,7 @@ window.addEventListener("load",
     HGBExtension.init();
     HGBStatusBar.init(); 
 
-    //window.addEventListener("keydown", HGBExtension.keyDownHandler, false);
-    //window.addEventListener("keyup", HGBExtension.keyUpHandler, false);
+    window.addEventListener("keyup", HGBExtension.keyUpHandler, false);
     gBrowser.tabContainer.addEventListener("TabClose", HGBExtension.tabCloseHandler, false);
     Application.activeWindow.events.addListener("TabOpen", HGBExtension.tabOpenHandler, false);
   }
