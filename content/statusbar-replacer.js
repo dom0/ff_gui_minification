@@ -41,7 +41,6 @@ var HGBStatusBar = {
   init: function() {
 		HGBStatusBar._closePopup("hgb-lu");
 		HGBStatusBar._closePopup("hgb-pb");
-
 		HGBStatusBar._changeSBColor();
 
 		//CUSTOM PROGRESS BAR

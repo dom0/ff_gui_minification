@@ -60,7 +60,7 @@
   </popupset>
 
 	<keyset>
-		<key id="hgb-keybinding" code="a" modifiers="control" oncommand="HGBExtension.toggleBars()"/>
+		<key id="hgb-keybinding" oncommand="HGBExtension.toggleBars()"/>
 	</keyset>
 
   <!-- CTRL+L -->

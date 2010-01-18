@@ -34,9 +34,17 @@ window.addEventListener("load",
     HGBExtension.init();
     HGBStatusBar.init(); 
 
+		PrefsObserver.onLoad(event);
+
     //window.addEventListener("keyup", HGBExtension.keyUpHandler, false);
     gBrowser.tabContainer.addEventListener("TabClose", HGBExtension.tabCloseHandler, false);
     Application.activeWindow.events.addListener("TabOpen", HGBExtension.tabOpenHandler, false);
   }
 , false);
 
+
+window.addEventListener("unload", 
+	function(event){
+		PrefsObserver.onUnload(event);
+	}
+, false);

@@ -43,6 +43,10 @@ pref("gui_minify.txtkey", "CTRL-Z);
 pref("gui_minify.modifiers", "control");
 pref("gui_minify.keycode", "90");
 
+pref("gui_minify.akey", "M");
+pref("gui_minify.amodifiers", "control");
+pref("gui_minify.akeycode", "");
+
 //STATUSBAR REPLACER
 pref("gui_minify.sblink", true);
 pref("gui_minify.sbprogressbar", true);

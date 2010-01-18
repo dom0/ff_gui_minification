@@ -37,7 +37,6 @@ var HGBExtension = {
 	
   init: function(){
 		HGBExtension.toggleBars();
-		//HGBExtension.keybind();
 	},
 
 
@@ -143,5 +142,89 @@ var HGBExtension = {
 	    else
 	      HGBExtension.tryshow();
 	}
+
+}
+
+
+var PrefsObserver = {
+	prefs: null,
+	a_key: null,
+	a_keycode: null,
+	a_modifiers: null,
+  sb_color: null,
+  sb_bgcolor: null,
+
+	// Initialize the extension
+	onLoad: function(){
+		// Register to receive notifications of preference changes
+
+		this.prefs = Components.classes["@mozilla.org/preferences-service;1"]
+    	.getService(Components.interfaces.nsIPrefService)
+    	.getBranch("gui_minify.");
+
+		this.prefs.QueryInterface(Components.interfaces.nsIPrefBranch2);
+		this.prefs.addObserver("", this, false);
+
+		this.a_key = this.prefs.getCharPref("key");
+		this.a_keycode = this.prefs.getCharPref("keycode");
+		this.a_modifiers = this.prefs.getCharPref("modifiers");
+
+		this.refreshKeybinding();    
+		this.refreshColors();    
+		//window.setInterval(this.refreshInformation, 10*60*1000);
+	},
+
+
+	onUnload: function(){
+    this.prefs.removeObserver("", this);
+  },
+
+	observe: function(subject, topic, data){
+  	if (topic != "nsPref:changed"){
+	    return;
+    }
+ 
+    switch(data){
+			case "akey":
+				this.a_key = this.prefs.getCharPref("akey");
+				this.refreshKeybinding();
+				break;
+			case "akeycode":
+				this.a_keycode = this.prefs.getCharPref("akeycode");
+				this.refreshKeybinding();
+				break;
+			case "amodifiers":
+				this.a_modifiers = this.prefs.getCharPref("amodifiers");
+				this.refreshKeybinding();
+				break;
+			case "sbcolor":
+				this.a_color = this.prefs.getCharPref("sbcolor");
+				this.refreshColors();
+				break;
+			case "sbbgcolor":
+				this.a_bgcolor = this.prefs.getCharPref("sbbgcolor");
+				this.refreshColors();
+				break;
+		}
+	},
+
+
+	refreshKeybinding: function(){
+		//MODIFICA I KEYBINDINGS
+		document.getElementById("hgb-keybinding").removeAttribute("key");
+		document.getElementById("hgb-keybinding").removeAttribute("keycode");
+		document.getElementById("hgb-keybinding").removeAttribute("modifiers");
+
+		document.getElementById("hgb-keybinding").setAttribute("modifiers", this.a_modifiers);
+		if (this.akey != "")
+			document.getElementById("hgb-keybinding").setAttribute("key", this.a_key);
+		else
+			document.getElementById("hgb-keybinding").setAttribute("keycode", this.a_keycode);
+	},
+
+	refreshColors: function(){
+		//MODIFICA I COLORI DELLA STATUSBAR-REPLACER
+		HGBStatusBar._changeSBColor();
+	},
 
 }

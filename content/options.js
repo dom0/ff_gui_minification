@@ -29,14 +29,6 @@
         #################################################################
 */ 
 
-var primary_win = null;
-
-window.addEventListener("load", function() {
-	primary_win = window.opener.opener;
-	document.getElementById("grab_key").addEventListener("click", function(ev){grabKey(ev)},false);
-},false);
-
-
 
 var changeKey = function(event){
 	
@@ -81,9 +73,3 @@ var grabKey = function(){
   window.addEventListener("keyup", changeKey, true);
 }
 
-
-var changePrefs = function(){
-	primary_win.HGBStatusBar._changeSBColor();
-	primary_win.getElementById("key-hide-all").setAttribute("keycode",Application.prefs.getValue("gui_minify.keycode", true));
-	primary_win.getElementById("key-hide-all").setAttribute("modifiers",Application.prefs.getValue("gui_minify.modifiers", true));
-}
