@@ -86,7 +86,7 @@ var HGBStatusBar = {
 	},
 
   _openPopup : function(what){
-	  var anchor = document.getElementById("status-bar");
+	  var anchor = document.getElementById("hgb-bottom");
 		var x = 7;
 		var y = anchor.clientHeight - 25;
     if (what=="hgb-pb")

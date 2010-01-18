@@ -59,7 +59,14 @@
     </tooltip>     
   </popupset>
 
+	<keyset>
+		<key id="hgb-keybinding" code="a" modifiers="control" oncommand="HGBExtension.toggleBars()"/>
+	</keyset>
+
   <!-- CTRL+L -->
   <command id="Browser:OpenLocation" oncommand="if (!HGBExtension.last_state) HGBExtension.tryshow(false);openLocation();"/>
 
+	<vbox id="browser-bottombox">
+		<hbox flex="1" id="hgb-bottom" style="height: 1px;"/>
+	</vbox>
 </overlay>

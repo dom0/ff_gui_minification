@@ -41,15 +41,17 @@
 
   <prefpane id="gui-minify-pref-pane" label="Settings">
     <preferences>
-      <preference id="gui-minify-pref-tabbar" name="gui_minify.tabbar" type="bool" instantApply="true"/>
-      <preference id="gui-minify-pref-addrbar" name="gui_minify.addrbar" type="bool" instantApply="true"/>
-      <preference id="gui-minify-pref-menubar" name="gui_minify.menubar" type="bool" instantApply="true"/>
-      <preference id="gui-minify-pref-statusbar" name="gui_minify.statusbar" type="bool" instantApply="true"/>
-      <preference id="gui-minify-pref-keystring" name="gui_minify.txtkey" type="string" instantApply="true"/>
-      <preference id="gui-minify-pref-sbprogress" name="gui_minify.sbprogressbar" type="bool" instantApply="true"/>
-      <preference id="gui-minify-pref-sblink" name="gui_minify.sblink" type="bool" instantApply="true"/>
-      <preference id="gui-minify-pref-sbcolor" name="gui_minify.sbcolor" type="string" instantApply="true" onchange="changePrefs()"/>
-      <preference id="gui-minify-pref-sbbgcolor" name="gui_minify.sbbgcolor" type="string" instantApply="true" onchange="changePrefs()"/>
+      <preference id="gui-minify-pref-tabbar" name="gui_minify.tabbar" type="bool"/>
+      <preference id="gui-minify-pref-addrbar" name="gui_minify.addrbar" type="bool"/>
+      <preference id="gui-minify-pref-menubar" name="gui_minify.menubar" type="bool"/>
+      <preference id="gui-minify-pref-statusbar" name="gui_minify.statusbar" type="bool"/>
+
+      <preference id="gui-minify-pref-keystring" name="gui_minify.txtkey" type="string"/>
+
+      <preference id="gui-minify-pref-sbprogress" name="gui_minify.sbprogressbar" type="bool"/>
+      <preference id="gui-minify-pref-sblink" name="gui_minify.sblink" type="bool"/>
+      <preference id="gui-minify-pref-sbcolor" name="gui_minify.sbcolor" type="string" onchange="changePrefs()"/>
+      <preference id="gui-minify-pref-sbbgcolor" name="gui_minify.sbbgcolor" type="string" onchange="changePrefs()"/>
 		
     </preferences>
 
