@@ -58,8 +58,10 @@ var HGBExtension = {
 	  document.getElementById("nav-bar").setAttribute("collapsed",false);
 	  //MENUBAR
 	  document.getElementById("toolbar-menubar").setAttribute("collapsed",false);
+    //BOOKMARKS
+	  document.getElementById("PersonalToolbar").setAttribute("collapsed",false);
 	  //STATUSBAR
-	  document.getElementById("status-bar").setAttribute("collapsed",false);
+    document.getElementById("status-bar").setAttribute("collapsed",false);
 	},
 	
 	tryhide : function(ch_state){
@@ -67,7 +69,8 @@ var HGBExtension = {
 	    !Application.prefs.getValue("gui_minify.tabbar", true)&&
 	    !Application.prefs.getValue("gui_minify.addrbar", true)&&
 	    !Application.prefs.getValue("gui_minify.menubar", true)&&
-	    !Application.prefs.getValue("gui_minify.statusbar", true)
+	    !Application.prefs.getValue("gui_minify.statusbar", true)&&
+	    !Application.prefs.getValue("gui_minify.bmarksbar", true)
 	  ) return;
 	
 
@@ -95,6 +98,9 @@ var HGBExtension = {
 	  //STATUSBAR
 	  if (Application.prefs.getValue("gui_minify.statusbar", true))
 	    document.getElementById("status-bar").setAttribute("collapsed",true);
+	  //BOOKMARKS
+	  if (Application.prefs.getValue("gui_minify.bmarksbar", true))
+	    document.getElementById("PersonalToolbar").setAttribute("collapsed",true);
 	
 	  HGBExtension.temp_show = false;
 	},

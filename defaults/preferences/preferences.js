@@ -36,6 +36,7 @@ pref("gui_minify.menubar", true);
 pref("gui_minify.addrbar", true);
 pref("gui_minify.tabbar", true);
 pref("gui_minify.statusbar", true);
+pref("gui_minify.bmarksbar", true);
 pref("gui_minify.laststate", 0);
 
 //KEYBINDINGS
