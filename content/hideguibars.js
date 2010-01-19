@@ -157,7 +157,7 @@ var PrefsObserver = {
 
 		this.all_shortcut = this.prefs.getCharPref("allshortcut");
 
-		//this.refreshKeybinding();    
+		this.refreshHideState();    
 		this.refreshColors();    
 	},
 
@@ -181,35 +181,22 @@ var PrefsObserver = {
 				this.a_bgcolor = this.prefs.getCharPref("sbbgcolor");
 				this.refreshColors();
 				break;
+      case "menubar":
+      case "addrbar":
+      case "tabbar":
+      case "statusbar":
+      case "bmarksbar":
+        this.refreshHideState();
+        break;
 		}
 	},
 
+  refreshHideState: function(){
+    //SYNC BAR'S VISIBILITY STATE
+    HGBExtension.tryshow(false);
+    HGBExtension.tryhide(false);
+  },
 
-	refreshKeybinding: function(){
-		//var key = document.getElementById("hgb-keybinding");
-		//MODIFICA I KEYBINDINGS
-		//document.getElementById("hgb-keybinding").removeAttribute("key");
-		//document.getElementById("hgb-keybinding").setAttribute("modifiers", this.a_modifiers);
-		//document.getElementById("hgb-keybinding").setAttribute("key", "COMMA");
-		//document.getElementById("hgb-keybinding").setAttribute("key", this.a_key);
-
-		//try {
-      //Components.classes["@mozilla.org/chrome/chrome-registry;1"].getService(Components.interfaces.nsIXULChromeRegistry).reloadChrome();
-    //} catch(e) { alert(e); }
-		//this.addEvent();		
-	},
-
-	addEvent: function(){
-		var key = document.getElementById("hgb-keybinding");
-		var newkey = document.createElement("key");
-		var keyset = key.parentNode;
-		newkey.setAttribute("id","newkey");
-		newkey.setAttribute("modifiers","control");
-		newkey.setAttribute("key","m");
-		newkey.setAttribute("oncommand","alert('pippo')");
-		keyset.appendChild(newkey);
-	},
-	
 	refreshColors: function(){
 		//MODIFICA I COLORI DELLA STATUSBAR-REPLACER
 		HGBStatusBar._changeSBColor();
