@@ -42,6 +42,7 @@
   <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
   <script type="application/x-javascript" src="chrome://gui_minify/content/hideguibars.js"/>
   <script type="application/x-javascript" src="chrome://gui_minify/content/statusbar-replacer.js"/>
+  <script type="application/x-javascript" src="chrome://gui_minify/content/keyutils.js"/>
   <script type="application/x-javascript" src="chrome://gui_minify/content/overlay.js"/>
 
   <menupopup id="menu_ToolsPopup">

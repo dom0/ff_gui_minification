@@ -29,34 +29,42 @@
         #################################################################
 */ 
 
+var KeyUtils = {
+
+  _doKeymap : function(){
+  	var keymap = Array();
+  	for (var i=48;i<=57;i++)
+  		keymap.push(i);
+  	for (var i=65;i<=90;i++)
+  		keymap.push(i);
+  	return keymap;
+  },
+  
+  
+  isAllowed : function(ev){
+	  var keymap = this._doKeymap();
+
+	  //ONLY SOME KEYSTROKES ARE ACCEPTED!
+	  return ((keymap.indexOf(ev.keyCode) == -1)||((!ev.metaKey)&&(!ev.ctrlKey)&&(!ev.altKey)));
+
+  },
+
+  
+  keyev2string : function(ev){
+    var comb = Array();
+  
+    if (ev.ctrlKey)	comb.push("CTRL");
+    if (ev.altKey) 	comb.push("ALT");
+  	if (ev.metaKey)	comb.push("META");
+    
+    comb.push(String.fromCharCode(ev.keyCode));
+    return comb.join("-");
+  },
 
 
-var changeKey = function(ev){
-
-  ev.preventDefault();
-  ev.stopPropagation();
-
-
-	//ONLY SOME KEYSTROKES ARE ACCEPTED!
-	if (KeyUtils.isAllowed(ev)){
-    //NOTIFICATION NEEDED!!!
-		return;
+  compareKeyevent : function(ev, str){
+    //alert(this.keyev2string(ev) + " - " + str);
+    return (this.keyev2string(ev) == str);
   }
-
-  var sc = KeyUtils.keyev2string(ev);
-	Application.prefs.setValue("gui_minify.allshortcut", sc);
-
-  document.getElementById("grab_key").label="Change key";
-  document.getElementById("txt_keycode").value=sc;
-  window.removeEventListener("keydown", changeKey, true);
+  
 }
-
-
-var grabKey = function(){
-  document.getElementById("txt_keycode").value="";
-  document.getElementById("grab_key").label="Press a key..";
-  document.getElementById("grab_key").blur();
-  document.getElementById("txt_keycode").focus();
-  window.addEventListener("keydown", changeKey, true);
-}
-

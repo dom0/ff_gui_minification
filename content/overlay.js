@@ -36,15 +36,9 @@ window.addEventListener("load",
 
 		PrefsObserver.onLoad(event);
 
-    //window.addEventListener("keyup", HGBExtension.keyUpHandler, false);
+    window.addEventListener("keydown", function(ev){HGBExtension.keydownHandler(ev)}, false);
     gBrowser.tabContainer.addEventListener("TabClose", HGBExtension.tabCloseHandler, false);
     Application.activeWindow.events.addListener("TabOpen", HGBExtension.tabOpenHandler, false);
   }
 , false);
 
-
-window.addEventListener("unload", 
-	function(event){
-		PrefsObserver.onUnload(event);
-	}
-, false);

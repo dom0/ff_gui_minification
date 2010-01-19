@@ -35,10 +35,10 @@ var HGBExtension = {
 	last_state : 0, //1 = show, 0 = hide
 	temp_show : false,
 	
+
   init: function(){
 		HGBExtension.toggleBars();
 	},
-
 
 	tryshow : function(ch_state){
 		HGBStatusBar._closePopup("hgb-lu");
@@ -61,7 +61,6 @@ var HGBExtension = {
 	  //STATUSBAR
 	  document.getElementById("status-bar").setAttribute("collapsed",false);
 	},
-	  
 	
 	tryhide : function(ch_state){
 	  if (
@@ -100,7 +99,6 @@ var HGBExtension = {
 	  HGBExtension.temp_show = false;
 	},
 
-
 	tabOpenHandler : function(event){
     var extension = HGBExtension;
   	event.data.events.addListener('load', function(event){
@@ -113,28 +111,16 @@ var HGBExtension = {
   	},false);
 	},
 
-
   tabCloseHandler : function(event){
 		if (HGBExtension.last_state==0) 
 			HGBExtension.tryhide(false);
 	},
 
-	keyUpHandler : function(event){
-	  var gmKey = Application.prefs.getValue("gui_minify.keycode", true);
-	  var gmModifiers = Application.prefs.getValue("gui_minify.modifiers", true);
-		
-		var alt = gmModifiers.search("ALT")>=0;
-		var ctrl = gmModifiers.search("CTRL")>=0;
-		var meta = gmModifiers.search("META")>=0;
+  keydownHandler : function(event){
+    if (KeyUtils.compareKeyevent(event, Application.prefs.getValue("gui_minify.allshortcut",true)))
+     HGBExtension.toggleBars(); 
+  },
 
-	  if((event.keyCode == gmKey) && 
-			(event.altKey == alt) && 
-			(event.ctrlKey == ctrl) && 
-			(event.metaKey == meta))
-		{
-	      HGBExtension.toggleBars();
-	  }
-	},
 
 	toggleBars : function(){
 	    if ((HGBExtension.last_state==1)||(HGBExtension.temp_show))
@@ -148,9 +134,7 @@ var HGBExtension = {
 
 var PrefsObserver = {
 	prefs: null,
-	a_key: null,
-	a_keycode: null,
-	a_modifiers: null,
+	all_shortcut: null,
   sb_color: null,
   sb_bgcolor: null,
 
@@ -165,37 +149,23 @@ var PrefsObserver = {
 		this.prefs.QueryInterface(Components.interfaces.nsIPrefBranch2);
 		this.prefs.addObserver("", this, false);
 
-		this.a_key = this.prefs.getCharPref("key");
-		this.a_keycode = this.prefs.getCharPref("keycode");
-		this.a_modifiers = this.prefs.getCharPref("modifiers");
+		this.all_shortcut = this.prefs.getCharPref("allshortcut");
 
-		this.refreshKeybinding();    
+		//this.refreshKeybinding();    
 		this.refreshColors();    
-		//window.setInterval(this.refreshInformation, 10*60*1000);
 	},
 
 
-	onUnload: function(){
-    this.prefs.removeObserver("", this);
-  },
-
 	observe: function(subject, topic, data){
+
   	if (topic != "nsPref:changed"){
 	    return;
     }
  
     switch(data){
-			case "akey":
-				this.a_key = this.prefs.getCharPref("akey");
-				this.refreshKeybinding();
-				break;
-			case "akeycode":
-				this.a_keycode = this.prefs.getCharPref("akeycode");
-				this.refreshKeybinding();
-				break;
-			case "amodifiers":
-				this.a_modifiers = this.prefs.getCharPref("amodifiers");
-				this.refreshKeybinding();
+			case "allshortcut":
+				this.all_shortcut = this.prefs.getCharPref("allshortcut");
+				//this.refreshKeybinding();
 				break;
 			case "sbcolor":
 				this.a_color = this.prefs.getCharPref("sbcolor");
@@ -210,18 +180,30 @@ var PrefsObserver = {
 
 
 	refreshKeybinding: function(){
+		//var key = document.getElementById("hgb-keybinding");
 		//MODIFICA I KEYBINDINGS
-		document.getElementById("hgb-keybinding").removeAttribute("key");
-		document.getElementById("hgb-keybinding").removeAttribute("keycode");
-		document.getElementById("hgb-keybinding").removeAttribute("modifiers");
+		//document.getElementById("hgb-keybinding").removeAttribute("key");
+		//document.getElementById("hgb-keybinding").setAttribute("modifiers", this.a_modifiers);
+		//document.getElementById("hgb-keybinding").setAttribute("key", "COMMA");
+		//document.getElementById("hgb-keybinding").setAttribute("key", this.a_key);
 
-		document.getElementById("hgb-keybinding").setAttribute("modifiers", this.a_modifiers);
-		if (this.akey != "")
-			document.getElementById("hgb-keybinding").setAttribute("key", this.a_key);
-		else
-			document.getElementById("hgb-keybinding").setAttribute("keycode", this.a_keycode);
+		//try {
+      //Components.classes["@mozilla.org/chrome/chrome-registry;1"].getService(Components.interfaces.nsIXULChromeRegistry).reloadChrome();
+    //} catch(e) { alert(e); }
+		//this.addEvent();		
 	},
 
+	addEvent: function(){
+		var key = document.getElementById("hgb-keybinding");
+		var newkey = document.createElement("key");
+		var keyset = key.parentNode;
+		newkey.setAttribute("id","newkey");
+		newkey.setAttribute("modifiers","control");
+		newkey.setAttribute("key","m");
+		newkey.setAttribute("oncommand","alert('pippo')");
+		keyset.appendChild(newkey);
+	},
+	
 	refreshColors: function(){
 		//MODIFICA I COLORI DELLA STATUSBAR-REPLACER
 		HGBStatusBar._changeSBColor();
