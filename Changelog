@@ -1,3 +1,13 @@
+v0.5
+FEATURE: aggiunte le voci di menu in tools
+REFACTORING: riscritta gestione delle preferenze e degli eventi da tastiera
+  * aggiunto un observer sul prefChange
+  * aggiunta una libreria di gestione degli eventi da tastiera
+  * modificate le preferenze per il salvataggio delle shortcut
+  * fixato lo stato iniziale dell'estensione (postdeploy)
+REFACTORING: preferenze gestite con observer
+FIX: aggiunto hbox in fondo alla pagina a cui agganciare i tooltips
+
 v0.4.5
 REFACTORING: keybinding and keypress handler
 FIX: now default keybinding is CTRL-Z
