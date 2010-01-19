@@ -43,10 +43,15 @@ var KeyUtils = {
   
   isAllowed : function(ev){
 	  var keymap = this._doKeymap();
-
+    if ([16,17,18,0,224].indexOf(ev.keyCode)!=-1)
+      return -3;
 	  //ONLY SOME KEYSTROKES ARE ACCEPTED!
-	  return ((keymap.indexOf(ev.keyCode) == -1)||((!ev.metaKey)&&(!ev.ctrlKey)&&(!ev.altKey)));
+    if ((!ev.metaKey)&&(!ev.ctrlKey)&&(!ev.altKey)) //NOT KEYSTROKE
+      return -2;
+    if (keymap.indexOf(ev.keyCode) == -1) //KEY NOT ALLOWED
+      return -1;
 
+    return 1
   },
 
   

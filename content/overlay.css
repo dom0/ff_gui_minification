@@ -21,10 +21,6 @@
   border: transparent !important;
 }
 
-.label {
-	#color: white;
-}
-
 .pb-container {
 	top: 10px; 
 	border: 1px 
@@ -36,7 +32,6 @@
 
 #hgb-progressbar{
 	width: 0px; 
-	#background-color: white; 
 	height: 3px; 
 	position: absolute;
 }

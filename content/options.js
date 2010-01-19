@@ -36,27 +36,32 @@ var changeKey = function(ev){
   ev.preventDefault();
   ev.stopPropagation();
 
-
-	//ONLY SOME KEYSTROKES ARE ACCEPTED!
-	if (KeyUtils.isAllowed(ev)){
-    //NOTIFICATION NEEDED!!!
-		return;
+  switch (KeyUtils.isAllowed(ev)){
+    case -3: //NO MODIFIERS
+      return;
+    case -2: //NO MODIFIERS
+      document.getElementById("hgb-all-validate").value="Must have a modifier like CTRL, ALT or META";
+      return;
+    case -1: //ONLY ALPHANUMERIC
+      document.getElementById("hgb-all-validate").value="Only alphanumeric keys are allowed";
+      return;
   }
 
   var sc = KeyUtils.keyev2string(ev);
 	Application.prefs.setValue("gui_minify.allshortcut", sc);
 
   document.getElementById("grab_key").label="Change key";
+  document.getElementById("hgb-all-validate").value="";
   document.getElementById("txt_keycode").value=sc;
-  window.removeEventListener("keydown", changeKey, true);
+  window.removeEventListener("keyup", changeKey, true);
 }
 
 
 var grabKey = function(){
   document.getElementById("txt_keycode").value="";
-  document.getElementById("grab_key").label="Press a key..";
+  document.getElementById("grab_key").label="Press combination..";
   document.getElementById("grab_key").blur();
   document.getElementById("txt_keycode").focus();
-  window.addEventListener("keydown", changeKey, true);
+  window.addEventListener("keyup", changeKey, true);
 }
 
