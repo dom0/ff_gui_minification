@@ -44,6 +44,16 @@
   <script type="application/x-javascript" src="chrome://gui_minify/content/statusbar-replacer.js"/>
   <script type="application/x-javascript" src="chrome://gui_minify/content/overlay.js"/>
 
+  <menupopup id="menu_ToolsPopup">
+		<menu label="Hide GUI Bars">
+			<menupopup>
+    		<menuitem label="Toggle Bars" oncommand="HGBExtension.toggleBars()"/>
+        <menuitem label="Options" oncommand="window.open('chrome://gui_minify/content/options.xul','','chrome');"/>
+			</menupopup>
+		</menu>
+  </menupopup>
+
+
   <popupset id="mainPopupSet">
     <tooltip id="hgb-pb" class="tooltip"> 
       <div class="div-notify" style="position: absolute; width: 173px">
@@ -59,9 +69,9 @@
     </tooltip>     
   </popupset>
 
-	<keyset>
-		<key id="hgb-keybinding" oncommand="HGBExtension.toggleBars()"/>
-	</keyset>
+	<!--keyset>
+		<key id="hgb-keybinding" oncommand="HGBExtension.toggleBars()" key="" modifiers=""/>
+	</keyset-->
 
   <!-- CTRL+L -->
   <command id="Browser:OpenLocation" oncommand="if (!HGBExtension.last_state) HGBExtension.tryshow(false);openLocation();"/>
@@ -69,4 +79,6 @@
 	<vbox id="browser-bottombox">
 		<hbox flex="1" id="hgb-bottom" style="height: 1px;"/>
 	</vbox>
+
+
 </overlay>
