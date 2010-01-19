@@ -1,6 +1,7 @@
 * KeyBinding modificabile - DONE!
 * Hide statusbar - DONE!
 * Popup con link e progressbar quando non attiva la statusbar - DONE!
+* Remember last state - DONE!
 * AutoHiding con timeout
 * Pulsanti di navigazione sulla statusbar
 * Navigazione in modalità hinting (v.di Vimperator)

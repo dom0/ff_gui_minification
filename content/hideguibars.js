@@ -32,12 +32,12 @@
 
 var HGBExtension = {
 
-	last_state : 0, //1 = show, 0 = hide
+	last_state : Application.prefs.getValue("gui_minify.laststate",true), //1 = show, 0 = hide
 	temp_show : false,
 	
 
   init: function(){
-		HGBExtension.toggleBars();
+		HGBExtension.tryhide(false);
 	},
 
 	tryshow : function(ch_state){

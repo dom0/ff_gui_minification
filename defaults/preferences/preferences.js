@@ -30,13 +30,13 @@
 //GENERALS
 pref("gui_minify.autohide", false);
 pref("gui_minify.autohidedelay", 1000);
-pref("gui_minify.keycode", 18);
 
 //SETTINGS
 pref("gui_minify.menubar", true);
 pref("gui_minify.addrbar", true);
 pref("gui_minify.tabbar", true);
 pref("gui_minify.statusbar", true);
+pref("gui_minify.laststate", 0);
 
 //KEYBINDINGS
 pref("gui_minify.allshortcut", "CTRL-Z");

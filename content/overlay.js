@@ -37,8 +37,15 @@ window.addEventListener("load",
 		PrefsObserver.onLoad(event);
 
     window.addEventListener("keydown", function(ev){HGBExtension.keydownHandler(ev)}, false);
-    gBrowser.tabContainer.addEventListener("TabClose", HGBExtension.tabCloseHandler, false);
-    Application.activeWindow.events.addListener("TabOpen", HGBExtension.tabOpenHandler, false);
+
+    Application.activeWindow.events.addListener("TabClose", HGBExtension.tabCloseHandler);
+    Application.activeWindow.events.addListener("TabOpen", HGBExtension.tabOpenHandler);
+
+    Application.events.addListener("quit", function(event){ 
+      //alert("Non voglio morire");
+      Application.prefs.setValue("gui_minify.laststate", HGBExtension.last_state);
+    });
+
   }
 , false);
 
