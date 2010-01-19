@@ -1,3 +1,7 @@
+v0.5.1
+FEATURE: remember last hiding state
+FEATURE: aggiunti i messaggi di validazione in grabKey()
+
 v0.5
 FEATURE: aggiunte le voci di menu in tools
 REFACTORING: riscritta gestione delle preferenze e degli eventi da tastiera
