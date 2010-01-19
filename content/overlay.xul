@@ -54,7 +54,6 @@
 		</menu>
   </menupopup>
 
-
   <popupset id="mainPopupSet">
     <tooltip id="hgb-pb" class="tooltip"> 
       <div class="div-notify" style="position: absolute; width: 173px">
