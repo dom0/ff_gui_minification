@@ -34,7 +34,7 @@ var HGBExtension = {
 
 	last_state : Application.prefs.getValue("gui_minify.laststate",true), //1 = hidden, 0 = visible
 	temp_show : false,
-	
+
 
   init: function(){
 		HGBExtension.tryhide(false);
@@ -59,7 +59,7 @@ var HGBExtension = {
 	  //MENUBAR
 	  document.getElementById("toolbar-menubar").setAttribute("collapsed",false);
     //BOOKMARKS
-	  document.getElementById("PersonalToolbar").setAttribute("collapsed",false);
+	  if (!HGBExtension._isPBDisabled()) document.getElementById("PersonalToolbar").setAttribute("collapsed",false);
 	  //STATUSBAR
     document.getElementById("status-bar").setAttribute("collapsed",false);
 	},
@@ -99,11 +99,31 @@ var HGBExtension = {
 	  if (Application.prefs.getValue("gui_minify.statusbar", true))
 	    document.getElementById("status-bar").setAttribute("collapsed",true);
 	  //BOOKMARKS
-	  if (Application.prefs.getValue("gui_minify.bmarksbar", true))
+	  if (Application.prefs.getValue("gui_minify.bmarksbar", true)&&(!HGBExtension._isPBDisabled()))
 	    document.getElementById("PersonalToolbar").setAttribute("collapsed",true);
 	
 	  HGBExtension.temp_show = false;
 	},
+
+
+	toggleBars : function(){
+	    if ((HGBExtension.last_state==1)||(HGBExtension.temp_show))
+	      HGBExtension.tryhide();
+	    else
+	      HGBExtension.tryshow();
+	},
+
+  _isPBDisabled: function(){
+    var _rdf = Components.classes["@mozilla.org/rdf/rdf-service;1"].getService(Ci.nsIRDFService);
+    var _dataSource = _rdf.GetDataSource("rdf:local-store");
+    var currentsetResource = _rdf.GetResource("collapsed");
+    var toolbar = _rdf.GetResource("chrome://browser/content/browser.xul#PersonalToolbar");
+    var target = _dataSource.GetTarget(toolbar, currentsetResource, true);
+    if (target instanceof Ci.nsIRDFLiteral)
+     return true;//target.Value;
+    return false;
+  },
+	
 
 	tabOpenHandler : function(event){
     var extension = HGBExtension;
@@ -126,14 +146,6 @@ var HGBExtension = {
     if (KeyUtils.compareKeyevent(event, Application.prefs.getValue("gui_minify.allshortcut",true)))
      HGBExtension.toggleBars(); 
   },
-
-
-	toggleBars : function(){
-	    if ((HGBExtension.last_state==1)||(HGBExtension.temp_show))
-	      HGBExtension.tryhide();
-	    else
-	      HGBExtension.tryshow();
-	}
 
 }
 
