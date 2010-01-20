@@ -40,7 +40,7 @@ pref("gui_minify.bmarksbar", true);
 pref("gui_minify.laststate", 0);
 
 //KEYBINDINGS
-pref("gui_minify.allshortcut", "CTRL-Z");
+pref("gui_minify.allshortcut", "CTRL-SHIFT-Z");
 
 //STATUSBAR REPLACER
 pref("gui_minify.sblink", true);

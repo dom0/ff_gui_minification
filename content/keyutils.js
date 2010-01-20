@@ -60,6 +60,7 @@ var KeyUtils = {
   
     if (ev.ctrlKey)	comb.push("CTRL");
     if (ev.altKey) 	comb.push("ALT");
+    if (ev.shiftKey) 	comb.push("SHIFT");
   	if (ev.metaKey)	comb.push("META");
     
     comb.push(String.fromCharCode(ev.keyCode));
