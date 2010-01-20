@@ -97,13 +97,15 @@
     </vbox>
 
     <vbox style="margin-top: 30px">
-      <label style="font-weight: bold; font-size: 120%" value="Key bindings (only alphanumeric key are allowed):"/>
+      <label style="font-weight: bold; font-size: 120%" value="Key bindings (only alphanumeric keys are allowed):"/>
     </vbox>
     <vbox style="margin-top: 5px">
       <hbox>
-        <button id="grab_key" label="Change key" width="115px" oncommand="grabKey()"/> 
-        <textbox id="txt_keycode" disabled="true" label="CTRL-Z"  preference="gui-minify-pref-allshortcut" style="font-weight: bold; color: black; width: 105px;"/>
-        <label flex="3" value="" id="hgb-all-validate" style="color: red; margin-top: 8px"/>
+        <button id="grab_key" label="Change key" style="width: 120px" oncommand="grabKey()"/> 
+        <textbox id="txt_keycode" disabled="true" label="CTRL-Z"  preference="gui-minify-pref-allshortcut" style="font-weight: bold; color: black; width: 150px"/>
+      </hbox>
+      <hbox>
+        <label value="" id="hgb-all-validate" style="color: red; margin-top: 8px"/>
       </hbox>
     </vbox>
   </tabpanel>

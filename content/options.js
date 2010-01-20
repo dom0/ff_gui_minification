@@ -43,7 +43,7 @@ var changeKey = function(ev){
     case -3: //NO MODIFIERS
       return;
     case -2: //NO MODIFIERS
-      document.getElementById("hgb-all-validate").value="Must have a modifier like CTRL, ALT or META";
+      document.getElementById("hgb-all-validate").value="Must have a modifier like CTRL, ALT, SHIFT or META (and SHIFT not alone)";
       return;
     case -1: //ONLY ALPHANUMERIC
       document.getElementById("hgb-all-validate").value="Only alphanumeric keys are allowed";

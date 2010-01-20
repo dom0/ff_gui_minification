@@ -1,3 +1,7 @@
+v0.5.2.1
+FIX: default shortcut is Ctrl-Shift+Z
+FIX: PersonalBar show/hide policy bug
+
 v0.5.2
 FEATURE: hide bookmarks bar
 FIX: prefs observer on bars visibility
