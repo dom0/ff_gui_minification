@@ -1,3 +1,9 @@
+v0.5.2
+FEATURE: hide bookmarks bar
+FIX: prefs observer on bars visibility
+FIX: regression bug on remembering previous state
+FEATURE: add version number on configuration window
+
 v0.5.1
 FEATURE: remember last hiding state
 FEATURE: aggiunti i messaggi di validazione in grabKey()

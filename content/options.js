@@ -62,6 +62,7 @@ var changeKey = function(ev){
 
 var grabKey = function(){
   document.getElementById("txt_keycode").value="";
+  document.getElementById("hgb-all-validate").value="Select new shortcut..";
   document.getElementById("grab_key").label="Press combination..";
   document.getElementById("grab_key").blur();
   document.getElementById("txt_keycode").focus();
