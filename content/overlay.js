@@ -36,7 +36,7 @@ window.addEventListener("load",
 
 		PrefsObserver.onLoad(event);
 
-    window.addEventListener("keydown", function(ev){HGBExtension.keydownHandler(ev)}, false);
+    window.addEventListener("keydown", function(ev){ HGBExtension.keydownHandler(ev) }, false);
 
     Application.activeWindow.events.addListener("TabClose", HGBExtension.tabCloseHandler);
     Application.activeWindow.events.addListener("TabOpen", HGBExtension.tabOpenHandler);

@@ -29,7 +29,10 @@
         #################################################################
 */ 
 
-
+window.addEventListener("load", function(ev){
+  document.getElementById("title").value = "" + "Hide GUI Bars v"+
+    Application.extensions.get("gui_minify@alcacoop.it").version;
+}, false);
 
 var changeKey = function(ev){
 

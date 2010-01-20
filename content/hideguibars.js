@@ -32,7 +32,7 @@
 
 var HGBExtension = {
 
-	last_state : Application.prefs.getValue("gui_minify.laststate",true), //1 = show, 0 = hide
+	last_state : Application.prefs.getValue("gui_minify.laststate",true), //1 = hidden, 0 = visible
 	temp_show : false,
 	
 
@@ -157,7 +157,6 @@ var PrefsObserver = {
 
 		this.all_shortcut = this.prefs.getCharPref("allshortcut");
 
-		this.refreshHideState();    
 		this.refreshColors();    
 	},
 
@@ -192,6 +191,8 @@ var PrefsObserver = {
 	},
 
   refreshHideState: function(){
+    if (HGBExtension.last_state)
+      return;
     //SYNC BAR'S VISIBILITY STATE
     HGBExtension.tryshow(false);
     HGBExtension.tryhide(false);
