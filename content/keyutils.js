@@ -32,37 +32,36 @@
 var KeyUtils = {
 
   _doKeymap : function(){
-  	var keymap = Array();
-  	for (var i=48;i<=57;i++)
-  		keymap.push(i);
-  	for (var i=65;i<=90;i++)
-  		keymap.push(i);
-  	return keymap;
+    var keymap = Array();
+    for (var i=48;i<=57;i++)
+      keymap.push(i);
+    for (var i=65;i<=90;i++)
+      keymap.push(i);
+    return keymap;
   },
-  
-  
+
+
   isAllowed : function(ev){
-	  var keymap = this._doKeymap();
+    var keymap = this._doKeymap();
     if ([16,17,18,0,224].indexOf(ev.keyCode)!=-1)
       return -3;
-	  //ONLY SOME KEYSTROKES ARE ACCEPTED!
+    //ONLY SOME KEYSTROKES ARE ACCEPTED!
     if ((!ev.metaKey)&&(!ev.ctrlKey)&&(!ev.altKey)) //NOT KEYSTROKE
       return -2;
     if (keymap.indexOf(ev.keyCode) == -1) //KEY NOT ALLOWED
       return -1;
-
     return 1
   },
 
-  
+
   keyev2string : function(ev){
     var comb = Array();
-  
+
     if (ev.ctrlKey)	comb.push("CTRL");
     if (ev.altKey) 	comb.push("ALT");
     if (ev.shiftKey) 	comb.push("SHIFT");
-  	if (ev.metaKey)	comb.push("META");
-    
+    if (ev.metaKey)	comb.push("META");
+
     comb.push(String.fromCharCode(ev.keyCode));
     return comb.join("-");
   },
@@ -72,5 +71,5 @@ var KeyUtils = {
     //alert(this.keyev2string(ev) + " - " + str);
     return (this.keyev2string(ev) == str);
   }
-  
+
 }

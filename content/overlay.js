@@ -29,23 +29,22 @@
         #################################################################
 */ 
       
-window.addEventListener("load",
-  function(event){
-    HGBExtension.init();
-    HGBStatusBar.init(); 
+window.addEventListener("load",function(event){
+ 
+  HGBExtension.init();
+  HGBStatusBar.init(); 
 
-		PrefsObserver.onLoad(event);
+  PrefsObserver.onLoad(event);
 
-    window.addEventListener("keydown", function(ev){ HGBExtension.keydownHandler(ev) }, false);
+  window.addEventListener("keydown", function(ev){ HGBExtension.keydownHandler(ev) }, false);
 
-    Application.activeWindow.events.addListener("TabClose", HGBExtension.tabCloseHandler);
-    Application.activeWindow.events.addListener("TabOpen", HGBExtension.tabOpenHandler);
+  Application.activeWindow.events.addListener("TabClose", HGBExtension.tabCloseHandler);
+  Application.activeWindow.events.addListener("TabOpen", HGBExtension.tabOpenHandler);
 
-    Application.events.addListener("quit", function(event){ 
-      //alert("Non voglio morire");
-      Application.prefs.setValue("gui_minify.laststate", HGBExtension.last_state);
-    });
+  Application.events.addListener("quit", function(event){ 
+    //alert("Non voglio morire");
+    Application.prefs.setValue("gui_minify.laststate", HGBExtension.last_state);
+  });
 
-  }
-, false);
+}, false);
 

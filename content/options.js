@@ -31,7 +31,7 @@
 
 window.addEventListener("load", function(ev){
   document.getElementById("title").value = "" + "Hide GUI Bars v"+
-    Application.extensions.get("gui_minify@alcacoop.it").version;
+  Application.extensions.get("gui_minify@alcacoop.it").version;
 }, false);
 
 var changeKey = function(ev){
@@ -51,7 +51,7 @@ var changeKey = function(ev){
   }
 
   var sc = KeyUtils.keyev2string(ev);
-	Application.prefs.setValue("gui_minify.allshortcut", sc);
+  Application.prefs.setValue("gui_minify.allshortcut", sc);
 
   document.getElementById("grab_key").label="Change key";
   document.getElementById("hgb-all-validate").value="";

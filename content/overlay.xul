@@ -36,8 +36,8 @@
 <!DOCTYPE overlay >
 
 <overlay id="hideNavbarOverlay" 
-	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
-	xmlns:html="http://www.w3.org/1999/xhtml">
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+  xmlns:html="http://www.w3.org/1999/xhtml">
 
   <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
   <script type="application/x-javascript" src="chrome://gui_minify/content/hideguibars.js"/>
@@ -46,39 +46,35 @@
   <script type="application/x-javascript" src="chrome://gui_minify/content/overlay.js"/>
 
   <menupopup id="menu_ToolsPopup">
-		<menu label="Hide GUI Bars">
-			<menupopup>
-    		<menuitem label="Toggle Bars" oncommand="HGBExtension.toggleBars()"/>
+    <menu label="Hide GUI Bars">
+      <menupopup>
+        <menuitem label="Toggle Bars" oncommand="HGBExtension.toggleBars()"/>
         <menuitem label="Options" oncommand="window.open('chrome://gui_minify/content/options.xul','','chrome');"/>
-			</menupopup>
-		</menu>
+      </menupopup>
+    </menu>
   </menupopup>
 
   <popupset id="mainPopupSet">
     <tooltip id="hgb-pb" class="tooltip"> 
       <div class="div-notify" style="position: absolute; width: 173px">
-				<div class="pb-container" id="border">
-					<div id="hgb-progressbar"></div>
-				</div>
-			</div>
+        <div class="pb-container" id="border">
+          <div id="hgb-progressbar"></div>
+        </div>
+      </div>
     </tooltip>     
     <tooltip id="hgb-lu" class="tooltip">
       <div class="div-notify">
-				<label id="hgb-linkurl" class="label"/>
-			</div>
+        <label id="hgb-linkurl" class="label"/>
+      </div>
     </tooltip>     
   </popupset>
-
-	<!--keyset>
-		<key id="hgb-keybinding" oncommand="HGBExtension.toggleBars()" key="" modifiers=""/>
-	</keyset-->
 
   <!-- CTRL+L -->
   <command id="Browser:OpenLocation" oncommand="if (!HGBExtension.last_state) HGBExtension.tryshow(false);openLocation();"/>
 
-	<vbox id="browser-bottombox">
-		<hbox flex="1" id="hgb-bottom" style="height: 1px;"/>
-	</vbox>
+  <vbox id="browser-bottombox">
+    <hbox flex="1" id="hgb-bottom" style="height: 1px;"/>
+  </vbox>
 
 
 </overlay>
