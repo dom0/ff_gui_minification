@@ -81,15 +81,17 @@ var HGBStatusBar = {
       p[i].style.color = Application.prefs.getValue("gui_minify.sbcolor", true);
     }
     document.getElementById("border").style.borderColor=Application.prefs.getValue("gui_minify.sbcolor", true);
+    //document.getElementById("divn1").style.borderColor=Application.prefs.getValue("gui_minify.sbcolor", true);
+    //document.getElementById("divn2").style.borderColor=Application.prefs.getValue("gui_minify.sbcolor", true);
     document.getElementById("hgb-progressbar").style.backgroundColor=Application.prefs.getValue("gui_minify.sbcolor", true);
   },
  
   _openPopup : function(what){
     var anchor = document.getElementById("hgb-bottom");
-    var x = 7;
-    var y = anchor.clientHeight - 25;
+    var x = 0;
+    var y = anchor.clientHeight - 15;
     if (what=="hgb-pb")
-      x = anchor.clientWidth - 180;
+      x = anchor.clientWidth - 160;
  
     var popup = document.getElementById(what);
     popup.openPopup(anchor, "overlap", x, y, false, false);

@@ -56,10 +56,10 @@
 
   <popupset id="mainPopupSet">
     <tooltip id="hgb-pb" class="tooltip"> 
-      <div class="div-notify" style="position: absolute; width: 173px">
-        <div class="pb-container" id="border">
-          <div id="hgb-progressbar"></div>
-        </div>
+      <div class="div-notify" style="-moz-border-radius-topleft: 5px; -moz-border-radius-topright: 0px">
+        <!--div class="pb-container" id="border">
+          <div id="hgb-progressbar"/>
+        </div-->
       </div>
     </tooltip>     
     <tooltip id="hgb-lu" class="tooltip">
