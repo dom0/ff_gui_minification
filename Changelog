@@ -1,3 +1,7 @@
+v0.5.3
+FIX: tooltips appearance
+FIX: replaced textbox with colorpickers in statusbar-replacer options
+
 v0.5.2.1
 FIX: default shortcut is Ctrl-Shift+Z
 FIX: PersonalBar show/hide policy bug
