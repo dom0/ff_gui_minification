@@ -1,6 +1,5 @@
 .tooltip {
   -moz-appearance: none !important; 
-  opacity: .9; 
   height: 100%; 
   width: 100%; 
   margin: 0px 0px 0px 0px; 
@@ -10,7 +9,6 @@
 }
 
 .div-notify {
-  opacity: .9; 
   -moz-border-radius-topright: 5px; 
   background-color: black; 
   height: 15px; 
@@ -18,26 +16,20 @@
   margin: 0px 0px 0px 0px; 
   padding-left: 5px;
   padding-right: 5px;
-  padding-top:: 3px;
-  border: 0px none transparent;
-  border-bottom: transparent !important;
+  border: transparent !important;
 }
 
 .pb-container {
-  border: 1px 
-  solid white; 
+  border: 1px solid white; 
   width: 150px; 
-  margin-top: 3px;
-  margin-bottom: 3px;
-  position: absolute;
+  height: 5px;
 }
 
 #hgb-progressbar {
   width: 0px; 
-  height: 5px; 
-  position: absolute;
 }
 
 .label {
   font-size: .95em;
+  margin-left: -3px;
 }

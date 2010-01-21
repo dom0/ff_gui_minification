@@ -81,8 +81,6 @@ var HGBStatusBar = {
       p[i].style.color = Application.prefs.getValue("gui_minify.sbcolor", true);
     }
     document.getElementById("border").style.borderColor=Application.prefs.getValue("gui_minify.sbcolor", true);
-    //document.getElementById("divn1").style.borderColor=Application.prefs.getValue("gui_minify.sbcolor", true);
-    //document.getElementById("divn2").style.borderColor=Application.prefs.getValue("gui_minify.sbcolor", true);
     document.getElementById("hgb-progressbar").style.backgroundColor=Application.prefs.getValue("gui_minify.sbcolor", true);
   },
  
@@ -104,7 +102,6 @@ var HGBStatusBar = {
  
  
   listener : {
- 
     QueryInterface: function(aIID) {
       if (aIID.equals(Components.interfaces.nsIWebProgressListener) ||
           aIID.equals(Components.interfaces.nsISupportsWeakReference) ||
@@ -131,14 +128,13 @@ var HGBStatusBar = {
       }
     },
  
- 
     onProgressChange: function(aWebProgress, aRequest, curSelf, maxSelf, curTot, maxTot) { 
       if ((!Application.prefs.getValue("gui_minify.statusbar", false))||
           (!Application.prefs.getValue("gui_minify.sbprogressbar", false))||
           (HGBExtension.last_state)||
           (HGBExtension.temp_show))
         return;
-      document.getElementById("hgb-progressbar").style.width = (curTot/maxTot*100)*1.5 + "px";
+      document.getElementById("hgb-progressbar").style.width = (curTot/maxTot*100)*1.48 + "px";
     },
  
     onStatusChange: function(aWebProgress, aRequest, aStatus, aMessage) {},
