@@ -59,7 +59,8 @@ var HGBExtension = {
     //MENUBAR
     document.getElementById("toolbar-menubar").setAttribute("collapsed",false);
     //BOOKMARKS
-    if (!HGBExtension._isPBDisabled()) document.getElementById("PersonalToolbar").setAttribute("collapsed",false);
+    if (HGBExtension._isPBDisabled()=="false") 
+      document.getElementById("PersonalToolbar").setAttribute("collapsed",false);
     //STATUSBAR
     document.getElementById("status-bar").setAttribute("collapsed",false);
   },
@@ -99,7 +100,7 @@ var HGBExtension = {
     if (Application.prefs.getValue("gui_minify.statusbar", true))
       document.getElementById("status-bar").setAttribute("collapsed",true);
     //BOOKMARKS
-    if (Application.prefs.getValue("gui_minify.bmarksbar", true)&&(!HGBExtension._isPBDisabled()))
+    if (Application.prefs.getValue("gui_minify.bmarksbar", true))//&&(!HGBExtension._isPBDisabled()=="false"))
       document.getElementById("PersonalToolbar").setAttribute("collapsed",true);
 
     HGBExtension.temp_show = false;
@@ -120,8 +121,8 @@ var HGBExtension = {
     var toolbar = _rdf.GetResource("chrome://browser/content/browser.xul#PersonalToolbar");
     var target = _dataSource.GetTarget(toolbar, currentsetResource, true);
     if (target instanceof Ci.nsIRDFLiteral)
-      return true;//target.Value;
-    return false;
+      return target.Value;
+    return "false";
   },
 
 
@@ -147,6 +148,16 @@ var HGBExtension = {
       HGBExtension.toggleBars(); 
   },
 
+  rdf: function(){
+    var _rdf = Components.classes["@mozilla.org/rdf/rdf-service;1"].getService(Ci.nsIRDFService);
+    var _dataSource = _rdf.GetDataSource("rdf:local-store");
+    var currentsetResource = _rdf.GetResource("collapsed");
+    var toolbar = _rdf.GetResource("chrome://browser/content/browser.xul#PersonalToolbar");
+    var target = _dataSource.GetTarget(toolbar, currentsetResource, true);
+    if (target instanceof Ci.nsIRDFLiteral)
+      return target.Value;
+    return "false";
+  },
 }
 
 
