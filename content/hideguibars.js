@@ -55,7 +55,8 @@ var HGBExtension = {
     if (gBrowser.mTabs.length>1)
     gBrowser.setStripVisibilityTo(true);
     //NAVBAR
-    document.getElementById("nav-bar").setAttribute("collapsed",false);
+    if (HGBExtension._isNBDisabled()=="false") 
+      document.getElementById("nav-bar").setAttribute("collapsed",false);
     //MENUBAR
     document.getElementById("toolbar-menubar").setAttribute("collapsed",false);
     //BOOKMARKS
@@ -114,17 +115,6 @@ var HGBExtension = {
       HGBExtension.tryshow();
     },
 
-  _isPBDisabled: function(){
-    var _rdf = Components.classes["@mozilla.org/rdf/rdf-service;1"].getService(Ci.nsIRDFService);
-    var _dataSource = _rdf.GetDataSource("rdf:local-store");
-    var currentsetResource = _rdf.GetResource("collapsed");
-    var toolbar = _rdf.GetResource("chrome://browser/content/browser.xul#PersonalToolbar");
-    var target = _dataSource.GetTarget(toolbar, currentsetResource, true);
-    if (target instanceof Ci.nsIRDFLiteral)
-      return target.Value;
-    return "false";
-  },
-
 
   tabOpenHandler : function(event){
     var extension = HGBExtension;
@@ -148,11 +138,25 @@ var HGBExtension = {
       HGBExtension.toggleBars(); 
   },
 
-  rdf: function(){
+
+
+  _isPBDisabled: function(){
     var _rdf = Components.classes["@mozilla.org/rdf/rdf-service;1"].getService(Ci.nsIRDFService);
     var _dataSource = _rdf.GetDataSource("rdf:local-store");
     var currentsetResource = _rdf.GetResource("collapsed");
     var toolbar = _rdf.GetResource("chrome://browser/content/browser.xul#PersonalToolbar");
+    var target = _dataSource.GetTarget(toolbar, currentsetResource, true);
+    if (target instanceof Ci.nsIRDFLiteral)
+      return target.Value;
+    return "false";
+  },
+
+
+  _isNBDisabled: function(){//TODO: refactoring
+    var _rdf = Components.classes["@mozilla.org/rdf/rdf-service;1"].getService(Ci.nsIRDFService);
+    var _dataSource = _rdf.GetDataSource("rdf:local-store");
+    var currentsetResource = _rdf.GetResource("collapsed");
+    var toolbar = _rdf.GetResource("chrome://browser/content/browser.xul#nav-bar");
     var target = _dataSource.GetTarget(toolbar, currentsetResource, true);
     if (target instanceof Ci.nsIRDFLiteral)
       return target.Value;
