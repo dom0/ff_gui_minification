@@ -3,12 +3,13 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>gui_minify@alcacoop.it</em:id>
     <em:name>Hide GUI Bars</em:name>
-    <em:version>0.5.3.2</em:version>
+    <em:version>0.5.3.2beta</em:version>
     <em:description>
       Allows you to easily Hide NavigationBar, MenuBar and TabBar with a toggle key.
     </em:description>
     <em:creator>Domenico Martella @ Alcacoop (Italy)</em:creator>
     <em:optionsURL>chrome://gui_minify/content/options.xul</em:optionsURL>  
+    <em:iconURL>chrome://gui_minify/content/hgb48.png</em:iconURL>
     <em:targetApplication>
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
