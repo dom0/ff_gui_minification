@@ -32,10 +32,15 @@
 -->
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE prefwindow SYSTEM "chrome://gui_minify/locale/options.dtd">
 
 <prefwindow id="gui-minify-prefs"
-  title="Hide GUI Bars configuration"
+  title="&prefwindow.title;"
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" style="width: 500px">
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="strings" src="chrome://gui_minify/locale/options.properties"/>
+  </stringbundleset>
 
   <script type="application/x-javascript" src="chrome://gui_minify/content/keyutils.js"/>
   <script type="application/x-javascript" src="chrome://gui_minify/content/options.js"/>
@@ -61,9 +66,9 @@
 
     <tabbox>
       <tabs>
-        <tab label="Options" selected="true"/>
-        <tab label="Statusbar replacer"/>
-        <tab label="Credits"/>
+        <tab label="&prefwindow.taboptions;" selected="true"/>
+        <tab label="&prefwindow.tabsbreplacer;"/>
+        <tab label="&prefwindow.tabcredits;"/>
       </tabs>
 
       <tabpanels>
@@ -71,32 +76,32 @@
 
 
           <vbox style="margin-top: 15px">
-            <label style="font-weight: bold; font-size: 120%">General:</label>
+            <label style="font-weight: bold; font-size: 120%" value="&prefwindow.general;"/>
           </vbox>
           <vbox style="margin-top: 5px">
             <hbox>
-              <checkbox label="Hide MenuBar" preference="gui-minify-pref-menubar" id="opt-menubar" checked="true"/>
+              <checkbox label="&prefwindow.hidemenubar;" preference="gui-minify-pref-menubar" id="opt-menubar" checked="true"/>
             </hbox>
             <hbox>
-              <checkbox label="Hide NavigationBar" preference="gui-minify-pref-addrbar" id="opt-addrbar" checked="true"/>
+              <checkbox label="&prefwindow.hidenavbar;" preference="gui-minify-pref-addrbar" id="opt-addrbar" checked="true"/>
             </hbox>
             <hbox>
-              <checkbox label="Hide TabBar" preference="gui-minify-pref-tabbar" id="opt-tabbar" checked="true"/>
+              <checkbox label="&prefwindow.hidetabbar;" preference="gui-minify-pref-tabbar" id="opt-tabbar" checked="true"/>
             </hbox>
             <hbox>
-              <checkbox label="Hide BookmarksBar" preference="gui-minify-pref-bmarksbar" id="opt-bmarksbar" checked="true"/>
+              <checkbox label="&prefwindow.hidepbar;" preference="gui-minify-pref-bmarksbar" id="opt-bmarksbar" checked="true"/>
             </hbox>
             <hbox>
-              <checkbox label="Hide StatusBar" preference="gui-minify-pref-statusbar" id="opt-statusbar" checked="true"/>
+              <checkbox label="&prefwindow.hidestatusbar;" preference="gui-minify-pref-statusbar" id="opt-statusbar" checked="true"/>
             </hbox>
           </vbox>
 
           <vbox style="margin-top: 30px">
-            <label style="font-weight: bold; font-size: 120%" value="Key bindings (only alphanumeric keys are allowed):"/>
+            <label style="font-weight: bold; font-size: 120%" value="&prefwindow.keybinding;"/>
           </vbox>
           <vbox style="margin-top: 5px">
             <hbox>
-              <button id="grab_key" label="Change key" style="width: 120px" oncommand="grabKey()"/> 
+              <button id="grab_key" label="&prefwindow.changekey;" style="width: 120px" oncommand="grabKey()"/> 
               <textbox id="txt_keycode" disabled="true" label="CTRL-Z"  preference="gui-minify-pref-allshortcut" style="font-weight: bold; color: black; width: 150px"/>
             </hbox>
             <hbox>
@@ -108,23 +113,23 @@
 
         <tabpanel orient="vertical">
           <vbox style="margin-top: 15px">
-            <label style="font-weight: bold; font-size: 120%">Statusbar functions:</label>
+            <label style="font-weight: bold; font-size: 120%" value="&prefwindow.sbfunctions;" />
           </vbox>
           <vbox style="margin-top: 5px">
             <hbox>
-              <checkbox label="Enable OverLink tooltip" preference="gui-minify-pref-sblink" id="opt-link" checked="true"/>
+              <checkbox label="&prefwindow.overlink;" preference="gui-minify-pref-sblink" id="opt-link" checked="true"/>
             </hbox>
             <hbox>
-              <checkbox label="Enable Progressbar tooltip" preference="gui-minify-pref-sbprogress" id="opt-pb" checked="true"/>
+              <checkbox label="&prefwindow.progress;" preference="gui-minify-pref-sbprogress" id="opt-pb" checked="true"/>
             </hbox>
             <vbox style="height: 20px"/>
             <hbox>
-              <label style="margin-top: 7px; width: 170px">Statusbar replacer color:</label>
+              <label style="margin-top: 7px; width: 170px" value="&prefwindow.sbcolor;"/>
               <colorpicker type="button" id="txt_sbcolor" preference="gui-minify-pref-sbcolor" />
               <separator flex="3"/>
             </hbox>
             <hbox>
-              <label style="margin-top: 7px; width: 170px">Statusbar replacer background:</label>
+              <label style="margin-top: 7px; width: 170px" value="&prefwindow.sbbgcolor;"/>
               <colorpicker type="button" id="txt_sbbgcolor" preference="gui-minify-pref-sbbgcolor" />
               <separator flex="3"/>
             </hbox>
@@ -133,13 +138,10 @@
 
         <tabpanel orient="vertical">
           <vbox style="margin-top: 15px">
-            <label style="font-weight: bold; font-size: 120%; margin-bottom: 15px">Special thanks to:</label>
-            <description>
-              Luca Greco a.k.a. RPL, that introduced me to XUL platform
-            </description>
-            <description>
-              Nico Delle Side a.k.a. DDS, for his precious contribution
-            </description>
+            <label style="font-weight: bold; font-size: 120%; margin-bottom: 15px" value="&prefwindow.thanks;"/>
+            <label value="&prefwindow.thanks1;"/>
+            <label value="&prefwindow.thanks2;"/>
+            <label value="&prefwindow.thanks3;"/>
           </vbox>
 
         </tabpanel>

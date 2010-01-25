@@ -39,21 +39,26 @@ var changeKey = function(ev){
   ev.preventDefault();
   ev.stopPropagation();
 
+  var strbundle = document.getElementById("strings");
+  var btnstr1=strbundle.getString("btnstr1");
+  var valstr2=strbundle.getString("valstr2");
+  var valstr3=strbundle.getString("valstr3");
+
   switch (KeyUtils.isAllowed(ev)){
     case -3: //NO MODIFIERS
       return;
     case -2: //NO MODIFIERS
-      document.getElementById("hgb-all-validate").value="Must have a modifier like CTRL, ALT, SHIFT or META (and SHIFT not alone)";
+      document.getElementById("hgb-all-validate").value=valstr2;
       return;
     case -1: //ONLY ALPHANUMERIC
-      document.getElementById("hgb-all-validate").value="Only alphanumeric keys are allowed";
+      document.getElementById("hgb-all-validate").value=valstr3;
       return;
   }
 
   var sc = KeyUtils.keyev2string(ev);
   Application.prefs.setValue("gui_minify.allshortcut", sc);
 
-  document.getElementById("grab_key").label="Change key";
+  document.getElementById("grab_key").label=btnstr1;
   document.getElementById("hgb-all-validate").value="";
   document.getElementById("txt_keycode").value=sc;
   window.removeEventListener("keyup", changeKey, true);
@@ -61,9 +66,14 @@ var changeKey = function(ev){
 
 
 var grabKey = function(){
+  var strbundle = document.getElementById("strings");
+  var btnstr2=strbundle.getString("btnstr2");
+  var valstr1=strbundle.getString("valstr1");
+
+
   document.getElementById("txt_keycode").value="";
-  document.getElementById("hgb-all-validate").value="Select new shortcut..";
-  document.getElementById("grab_key").label="Press combination..";
+  document.getElementById("hgb-all-validate").value=valstr1;
+  document.getElementById("grab_key").label=btnstr2;
   document.getElementById("grab_key").blur();
   document.getElementById("txt_keycode").focus();
   window.addEventListener("keyup", changeKey, true);

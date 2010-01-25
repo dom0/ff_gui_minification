@@ -1,0 +1,26 @@
+<!ENTITY prefwindow.title "Configurazione di Hide GUI Bars">
+
+<!ENTITY prefwindow.taboptions "Opzioni">
+<!ENTITY prefwindow.tabsbreplacer "Statusbar replacer">
+<!ENTITY prefwindow.tabcredits "Ringraziamenti">
+
+<!ENTITY prefwindow.general "Opzioni generali:">
+<!ENTITY prefwindow.hidemenubar "Nascondi la barra dei menu">
+<!ENTITY prefwindow.hidenavbar "Nascondi la barra di navigazione">
+<!ENTITY prefwindow.hidetabbar "Nascondi la barra dei tab">
+<!ENTITY prefwindow.hidepbar "Nascondi la barra dei segnalibri">
+<!ENTITY prefwindow.hidestatusbar "Nascondi la statusbar">
+
+<!ENTITY prefwindow.keybinding "Tasti di scelta rapida (sono ammessi solo tasti alfanumerici):">
+<!ENTITY prefwindow.changekey "Modifica shortcut">
+
+<!ENTITY prefwindow.sbfunctions "Funzionalità della statusbar:">
+<!ENTITY prefwindow.overlink "Abilita i tooltip al passaggio del mouse sui link">
+<!ENTITY prefwindow.progress "Abilita i tooltip della progressbar">
+<!ENTITY prefwindow.sbcolor "Colore del testo dei tooltip:">
+<!ENTITY prefwindow.sbbgcolor "Colore dello sfondo dei tooltip:">
+
+<!ENTITY prefwindow.thanks "Un ringraziamento particolare a:">
+<!ENTITY prefwindow.thanks1 "Luca Greco a.k.a. RPL, che mi ha fatto conoscere questa splendida piattaforma">
+<!ENTITY prefwindow.thanks2 "Nico Delle Side a.k.a. DDS, per il suo prezioso contributo">
+<!ENTITY prefwindow.thanks3 "Andrea Verdesca, per l'amicizia dimostrata negli anni">

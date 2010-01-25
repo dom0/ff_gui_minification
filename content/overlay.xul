@@ -32,8 +32,7 @@
 -->
 
 <?xml-stylesheet type="text/css" href="chrome://gui_minify/content/overlay.css"?>
-
-<!DOCTYPE overlay >
+<!DOCTYPE overlay SYSTEM "chrome://gui_minify/locale/overlay.dtd">
 
 <overlay id="hideNavbarOverlay" 
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
@@ -48,8 +47,8 @@
   <menupopup id="menu_ToolsPopup">
     <menu label="Hide GUI Bars">
       <menupopup>
-        <menuitem label="Toggle Bars" oncommand="HGBExtension.toggleBars()"/>
-        <menuitem label="Options" oncommand="window.open('chrome://gui_minify/content/options.xul','','chrome');"/>
+        <menuitem label="&gui_minify.toggle;" oncommand="HGBExtension.toggleBars()"/>
+        <menuitem label="&gui_minify.options;" oncommand="window.open('chrome://gui_minify/content/options.xul','','chrome');"/>
       </menupopup>
     </menu>
   </menupopup>

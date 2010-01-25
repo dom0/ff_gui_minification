@@ -1,0 +1,27 @@
+<!ENTITY prefwindow.title "Hide GUI Bars configuration">
+
+<!ENTITY prefwindow.taboptions "Options">
+<!ENTITY prefwindow.tabsbreplacer "Statusbar replacer">
+<!ENTITY prefwindow.tabcredits "Credits">
+
+<!ENTITY prefwindow.general "General:">
+<!ENTITY prefwindow.hidemenubar "Hide MenuBar">
+<!ENTITY prefwindow.hidenavbar "Hide NavigatioBar">
+<!ENTITY prefwindow.hidetabbar "Hide TabBar">
+<!ENTITY prefwindow.hidepbar "Hide BookmarksBar">
+<!ENTITY prefwindow.hidestatusbar "Hide StatusBar">
+
+<!ENTITY prefwindow.keybinding "Key bindings (only alphanumeric keys are allowed):">
+<!ENTITY prefwindow.changekey "Change key">
+
+<!ENTITY prefwindow.sbfunctions "Statusbar functions:">
+<!ENTITY prefwindow.overlink "Enable OverLink tooptip">
+<!ENTITY prefwindow.progress "Enable Progressbar tooltip">
+<!ENTITY prefwindow.sbcolor "Statusbar replacer color:">
+<!ENTITY prefwindow.sbbgcolor "Statusbar replacer background:">
+
+<!ENTITY prefwindow.thanks "Special thanks to:">
+<!ENTITY prefwindow.thanks1 "Luca Greco a.k.a. RPL, that introduced me to XUL platform">
+<!ENTITY prefwindow.thanks2 "Nico Delle Side a.k.a. DDS, for his precious contribution">
+<!ENTITY prefwindow.thanks3 "Andrea Verdesca, for his friendship :)">
+
