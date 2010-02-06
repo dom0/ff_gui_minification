@@ -1,0 +1,27 @@
+<!ENTITY prefwindow.title "Hide GUI Bars – ustawienia">
+
+<!ENTITY prefwindow.taboptions "Opcje">
+<!ENTITY prefwindow.tabsbreplacer "Zamiennik paska stanu">
+<!ENTITY prefwindow.tabcredits "Od autora">
+
+<!ENTITY prefwindow.general "Ukrywaj następujące paski:">
+<!ENTITY prefwindow.hidemenubar "pasek menu">
+<!ENTITY prefwindow.hidenavbar "pasek narzędzi nawigacyknych">
+<!ENTITY prefwindow.hidetabbar "pasek kart">
+<!ENTITY prefwindow.hidepbar "pasek zakładek">
+<!ENTITY prefwindow.hidestatusbar "pasek stanu">
+
+<!ENTITY prefwindow.keybinding "Skrót klawiszowy (tylko klawisze alfanumeryczne):">
+<!ENTITY prefwindow.changekey "Zmień skrót">
+
+<!ENTITY prefwindow.sbfunctions "Funkcje zamiennika paska stanu:">
+<!ENTITY prefwindow.overlink "Wyświetlaj adres wskazanego odnośnika">
+<!ENTITY prefwindow.progress "Wyświetlaj pasek postępu wczytywania">
+<!ENTITY prefwindow.sbcolor "Kolor tekstu:">
+<!ENTITY prefwindow.sbbgcolor "Kolor tła:">
+
+<!ENTITY prefwindow.thanks "Specjalne podziękowania dla:">
+<!ENTITY prefwindow.thanks1 "Luca Greco a.k.a. RPL za naukę programowania w XUL-u">
+<!ENTITY prefwindow.thanks2 "Nico Delle Side a.k.a. DDS za cenny wkład">
+<!ENTITY prefwindow.thanks3 "Andrea Verdesca za jego przyjaźń :)">
+

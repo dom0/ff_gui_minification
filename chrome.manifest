@@ -1,5 +1,6 @@
 overlay	chrome://browser/content/browser.xul chrome://gui_minify/content/overlay.xul
 content gui_minify content/
 locale  gui_minify en-US locale/en-US/
-locale  gui_minify it locale/it-IT/
-locale  gui_minify it-IT locale/it-IT/
+locale  gui_minify it    chrome/locale/it/
+locale  gui_minify pl    chrome/locale/pl/
+
