@@ -47,8 +47,8 @@
   <menupopup id="menu_ToolsPopup">
     <menu label="Hide GUI Bars">
       <menupopup>
-        <menuitem label="&gui_minify.toggle;" oncommand="HGBExtension.toggleBars()"/>
-        <menuitem label="&gui_minify.options;" oncommand="window.open('chrome://gui_minify/content/options.xul','','chrome');"/>
+        <menuitem id="menu_toggle" label="&gui_minify.toggle;" oncommand="HGBExtension.toggleBars()"/>
+        <menuitem id="menu_options" label="&gui_minify.options;" oncommand="window.open('chrome://gui_minify/content/options.xul','','chrome');"/>
       </menupopup>
     </menu>
   </menupopup>
